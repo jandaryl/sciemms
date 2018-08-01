@@ -11,7 +11,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        // Default password
+        // Default password - n7Kx6EdAeNByVsm7
         $defaultPassword = app()->environment('production') ? str_random() : 'secret';
         $this->command->getOutput()->writeln("<info>Default password:</info> $defaultPassword");
 
