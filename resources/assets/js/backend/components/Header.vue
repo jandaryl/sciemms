@@ -17,7 +17,7 @@
           <b-dropdown-item to="/posts/create" v-if="this.$app.user.can('create posts')">
             <i class="fe fe-book"></i>&nbsp;&nbsp;{{ $t('labels.backend.new_menu.post') }}
           </b-dropdown-item>
-          <b-dropdown-item to="/form-settings/create" v-if="this.$app.user.can('create form_settings')">
+          <b-dropdown-item to="/form-settings/create" v-if="this.$app.user.can('create form_settings') && this.$app.formSettings">
             <i class="fe fe-sliders"></i>&nbsp;&nbsp;{{ $t('labels.backend.new_menu.form_setting') }}
           </b-dropdown-item>
           <b-dropdown-item to="/users/create" v-if="this.$app.user.can('create users')">
@@ -26,15 +26,15 @@
           <b-dropdown-item to="/roles/create" v-if="this.$app.user.can('create roles')">
             <i class="fe fe-shield"></i>&nbsp;&nbsp;{{ $t('labels.backend.new_menu.role') }}
           </b-dropdown-item>
-          <b-dropdown-item to="/metas/create" v-if="this.$app.user.can('create metas')">
+          <b-dropdown-item to="/metas/create" v-if="this.$app.user.can('create metas') && this.$app.metas">
             <i class="fe fe-tag"></i>&nbsp;&nbsp;{{ $t('labels.backend.new_menu.meta') }}
           </b-dropdown-item>
-          <b-dropdown-item to="/redirections/create" v-if="this.$app.user.can('create redirections')">
+          <b-dropdown-item to="/redirections/create" v-if="this.$app.user.can('create redirections') && this.$app.redirection">
             <i class="fe fe-fast-forward"></i>&nbsp;&nbsp;{{ $t('labels.backend.new_menu.redirection') }}
           </b-dropdown-item>
         </template>
       </HeaderDropdown>
-      <HeaderDropdown right class="px-3 d-none d-md-block">
+      <HeaderDropdown right class="px-3 d-none d-md-block" v-if="this.$app.multiLanguage">
         <template slot="header">
           <span class="d-md-down-none">{{ $t('labels.language') }}</span>
         </template>
