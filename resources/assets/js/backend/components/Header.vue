@@ -63,7 +63,7 @@
         </template>
       </HeaderDropdown>
     </b-navbar-nav>
-    <AsideToggler class="d-none d-lg-block"></AsideToggler>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   </Header>
 </template>
 
