@@ -26,19 +26,25 @@
     <!-- JS settings -->
     <script type="application/json" data-settings-selector="settings-json">
         {!! json_encode([
-            'locale' => app()->getLocale(),
-            'appName' => config('app.name'),
-            'homePath' => route('home'),
-            'adminHomePath' => route('admin.home', [], false),
-            'adminPathName' => config('app.admin_path'),
-            'editorName' => config('app.editor_name'),
-            'editorSiteUrl' => config('app.editor_site_url'),
-            'locales' => LaravelLocalization::getSupportedLocales(),
-            'user' => $loggedInUser,
-            'permissions' => session()->get('permissions'),
-            'isImpersonation' => session()->has('admin_user_id') && session()->has('temp_user_id'),
-            'usurperName' => session()->get('admin_user_name'),
-            'blogEnabled' => config('blog.enabled')
+            'locale'            => app()->getLocale(),
+            'appName'           => config('app.name'),
+            'homePath'          => route('home'),
+            'adminHomePath'     => route('admin.home', [], false),
+            'adminPathName'     => config('app.admin_path'),
+            'editorName'        => config('app.editor_name'),
+            'editorSiteUrl'     => config('app.editor_site_url'),
+            'locales'           => LaravelLocalization::getSupportedLocales(),
+            'user'              => $loggedInUser,
+            'permissions'       => session()->get('permissions'),
+            'isImpersonation'   => session()->has('admin_user_id') && session()->has('temp_user_id'),
+            'usurperName'       => session()->get('admin_user_name'),
+            'blogEnabled'       => config('blog.enabled'),
+            'blogPromoted'      => config('blog.promoted'),
+            'multiLanguage'     => config('features.multi-language'),
+            'formSettings'      => config('features.form-settings'),
+            'formSubmissions'   => config('features.form-submissions'),
+            'metas'             => config('features.metas'),
+            'redirection'       => config('features.redirection')
         ]) !!}
     </script>
 

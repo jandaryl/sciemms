@@ -29,7 +29,7 @@
               <p>{{ $t('labels.backend.dashboard.active_users') }}</p>
             </b-card>
           </b-col>
-          <b-col sm v-if="this.$app.user.can('view form_submissions')">
+          <b-col sm v-if="this.$app.user.can('view form_submissions') && this.$app.formSubmissions">
             <b-card bg-variant="info" text-variant="white">
               <h4 class="mb-0">{{ this.$store.state.counters.formSubmissionsCount }}</h4>
               <p>{{ $t('labels.backend.dashboard.form_submissions') }}</p>
