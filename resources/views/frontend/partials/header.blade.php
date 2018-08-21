@@ -21,16 +21,18 @@
             </div>
 
             <div class="navbar-nav">
-                @if (count(config('laravellocalization.supportedLocales')) > 1)
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ __('labels.language') }}
-                        </a>
+                @if (config("features.multi-language"))
+                    @if (count(config('laravellocalization.supportedLocales')) > 1)
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ __('labels.language') }}
+                            </a>
 
-                        <div class="dropdown-menu" aria-labelledby="dropdown01">
-                            @include('partials.locales')
+                            <div class="dropdown-menu" aria-labelledby="dropdown01">
+                                @include('partials.locales')
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 @endif
                 @guest
                     <a class="nav-link" href="{{ route('login') }}">@lang('labels.user.login')</a>
