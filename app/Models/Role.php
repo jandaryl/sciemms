@@ -2,15 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Facades\Gate;
 use App\Models\Traits\TranslatableJson;
+use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Gate;
 use Spatie\Translatable\HasTranslations;
 
 class Role extends Model
 {
     use HasTranslations;
     use TranslatableJson;
+    use Cachable;
 
     public $translatable = [
         'display_name',

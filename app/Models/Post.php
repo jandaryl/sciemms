@@ -2,21 +2,22 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
-use Spatie\Tags\HasTags;
-use Laravel\Scout\Searchable;
-use App\Models\Traits\Metable;
 use App\Models\Traits\HasEditor;
-use Illuminate\Support\Facades\Gate;
-use Spatie\MediaLibrary\Models\Media;
-use Stevebauman\Purify\Facades\Purify;
-use App\Models\Traits\TranslatableJson;
-use Illuminate\Database\Eloquent\Model;
-use Spatie\Translatable\HasTranslations;
-use Illuminate\Database\Eloquent\Builder;
 use App\Models\Traits\HasTranslatableSlug;
+use App\Models\Traits\Metable;
+use App\Models\Traits\TranslatableJson;
+use Carbon\Carbon;
+use GeneaLabs\LaravelModelCaching\Traits\Cachable;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Gate;
+use Laravel\Scout\Searchable;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\Models\Media;
+use Spatie\Tags\HasTags;
+use Spatie\Translatable\HasTranslations;
+use Stevebauman\Purify\Facades\Purify;
 
 class Post extends Model implements HasMedia
 {
@@ -27,6 +28,7 @@ class Post extends Model implements HasMedia
     use HasTranslatableSlug;
     use HasMediaTrait;
     use HasEditor;
+    use Cachable;
 
     public $sluggable = 'title';
 

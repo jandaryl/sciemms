@@ -2,15 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Facades\Gate;
-use Illuminate\Notifications\Notifiable;
+use App\Notifications\ResetPassword as ResetPasswordNotification;
+use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Notifications\ResetPassword as ResetPasswordNotification;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Gate;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use Cachable;
 
     protected $with = [
         'roles',
