@@ -28,19 +28,19 @@ export default (app, i18n, newPostsCount, pendingPostsCount) => {
     {
       title: true,
       name: i18n.t('labels.backend.sidebar.forms'),
-      access: app.user.can('view form_submissions') || app.user.can('view form_settings')
+      access: app.user.can('view form_submissions') && app.formSubmissions || app.user.can('view form_settings') && app.formSettings
     },
     {
       name: i18n.t('labels.backend.form_submissions.titles.main'),
       url: '/form-submissions',
       icon: 'fe fe-list',
-      access: app.user.can('view form_submissions')
+      access: app.user.can('view form_submissions') && app.formSubmissions
     },
     {
       name: i18n.t('labels.backend.form_settings.titles.main'),
       url: '/form-settings',
       icon: 'fe fe-sliders',
-      access: app.user.can('view form_settings')
+      access: app.user.can('view form_settings') && app.formSettings
     },
     {
       divider: true,
@@ -70,19 +70,19 @@ export default (app, i18n, newPostsCount, pendingPostsCount) => {
     {
       title: true,
       name: i18n.t('labels.backend.sidebar.seo'),
-      access: app.user.can('view metas') || app.user.can('view redirections')
+      access: app.user.can('view metas') && app.metas || app.user.can('view redirections') && app.redirection
     },
     {
       name: i18n.t('labels.backend.metas.titles.main'),
       url: '/metas',
       icon: 'fe fe-tag',
-      access: app.user.can('view metas')
+      access: app.user.can('view metas') && app.metas
     },
     {
       name: i18n.t('labels.backend.redirections.titles.main'),
       url: '/redirections',
       icon: 'fe fe-fast-forward',
-      access: app.user.can('view redirections')
+      access: app.user.can('view redirections') && app.redirection
     }
   ]
 }

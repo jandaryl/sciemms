@@ -213,7 +213,7 @@
                     </b-row>
                   </div>
 
-                  <div class="form-group">
+                  <div class="form-group" v-if="this.$app.blogPromoted">
                     <b-row>
                       <b-col lg="9" offset-lg="3">
                         <c-switch
@@ -227,7 +227,7 @@
                 </b-card-body>
               </b-collapse>
             </b-card>
-            <b-card no-body>
+            <b-card no-body v-if="this.$app.metas">
               <b-card-header header-tag="header" role="tab">
                 <h5 class="card-title">
                   <a href="#" v-b-toggle.collapseTwo>
