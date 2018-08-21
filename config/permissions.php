@@ -88,17 +88,17 @@ return [
     //     'category'     => 'permissions.categories.form',
     // ],
 
-    // 'view form_submissions' => [
-    //     'display_name' => 'permissions.view.form_submissions.display_name',
-    //     'description'  => 'permissions.view.form_submissions.description',
-    //     'category'     => 'permissions.categories.form',
-    // ],
+    'view form_submissions' => [
+        'display_name' => 'permissions.view.form_submissions.display_name',
+        'description'  => 'permissions.view.form_submissions.description',
+        'category'     => 'permissions.categories.form',
+    ],
 
-    // 'delete form_submissions' => [
-    //     'display_name' => 'permissions.delete.form_submissions.display_name',
-    //     'description'  => 'permissions.delete.form_submissions.description',
-    //     'category'     => 'permissions.categories.form',
-    // ],
+    'delete form_submissions' => [
+        'display_name' => 'permissions.delete.form_submissions.display_name',
+        'description'  => 'permissions.delete.form_submissions.description',
+        'category'     => 'permissions.categories.form',
+    ],
 
     'view users' => [
         'display_name' => 'permissions.view.users.display_name',
