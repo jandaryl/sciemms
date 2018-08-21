@@ -18,57 +18,6 @@ use App\Models\Traits\HasTranslatableSlug;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
-/**
- * App\Models\Post.
- *
- * @property int                                                        $id
- * @property int|null                                                   $user_id
- * @property int                                                        $status
- * @property bool                                                       $promoted
- * @property bool                                                       $pinned
- * @property array                                                      $title
- * @property array                                                      $summary
- * @property array                                                      $body
- * @property array                                                      $slug
- * @property \Carbon\Carbon|null                                        $published_at
- * @property \Carbon\Carbon|null                                        $unpublished_at
- * @property \Carbon\Carbon|null                                        $created_at
- * @property \Carbon\Carbon|null                                        $updated_at
- * @property mixed                                                      $can_delete
- * @property mixed                                                      $can_edit
- * @property mixed                                                      $has_featured_image
- * @property mixed                                                      $featured_image_path
- * @property mixed                                                      $thumbnail_image_path
- * @property mixed                                                      $meta_description
- * @property mixed                                                      $meta_title
- * @property mixed                                                      $published
- * @property mixed                                                      $state
- * @property mixed                                                      $status_label
- * @property \App\Models\Meta                                           $meta
- * @property \App\Models\User|null                                      $owner
- * @property \Illuminate\Database\Eloquent\Collection|\App\Models\Tag[] $tags
- *
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post published()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereBody($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereHasMedia($tags, $match_all = false)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereHasMediaMatchAll($tags)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post wherePinned($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post wherePromoted($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post wherePublishedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereStatus($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereSummary($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereUnpublishedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post whereUserId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post withMedia($tags = array(), $match_all = false)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post withMediaMatchAll($tags = array())
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Post withOwner(\App\Models\User $user)
- * @mixin \Eloquent
- */
 class Post extends Model implements HasMedia
 {
     use Searchable;
@@ -89,11 +38,6 @@ class Post extends Model implements HasMedia
 
     public $asYouType = true;
 
-    /**
-     * The attributes that are translatable.
-     *
-     * @var array
-     */
     public $translatable = [
         'title',
         'summary',
@@ -101,21 +45,11 @@ class Post extends Model implements HasMedia
         'slug',
     ];
 
-    /**
-     * The attributes that should be mutated to dates.
-     *
-     * @var array
-     */
     protected $dates = [
         'published_at',
         'unpublished_at',
     ];
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array
-     */
     protected $appends = [
         'state',
         'status_label',
@@ -126,11 +60,6 @@ class Post extends Model implements HasMedia
         'can_delete',
     ];
 
-    /**
-     * The attributes that are eager loaded.
-     *
-     * @var array
-     */
     protected $casts = [
         'status'             => 'integer',
         'pinned'             => 'boolean',
@@ -138,11 +67,6 @@ class Post extends Model implements HasMedia
         'has_featured_image' => 'boolean',
     ];
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'status',
         'title',
@@ -220,13 +144,11 @@ class Post extends Model implements HasMedia
 
     public function getHasFeaturedImageAttribute()
     {
-        /* @var Media $media */
         return (bool) $this->getMedia('featured image')->first();
     }
 
     public function getFeaturedImagePathAttribute()
     {
-        /** @var Media $media */
         if ($media = $this->getMedia('featured image')->first()) {
             return str_replace(config('app.url'), '', $media->getUrl());
         }
@@ -272,34 +194,16 @@ class Post extends Model implements HasMedia
         }
     }
 
-    /**
-     * Scope a query to only include published articles.
-     *
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     *
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
     public function scopePublished(Builder $query)
     {
         return $query->where('status', '=', self::PUBLISHED);
     }
 
-    /**
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param \App\Models\User                      $user
-     *
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
     public function scopeWithOwner(Builder $query, User $user)
     {
         return $query->where('user_id', '=', $user->id);
     }
 
-    /**
-     * Get the indexable data array for the model.
-     *
-     * @return array
-     */
     public function toSearchableArray()
     {
         return [

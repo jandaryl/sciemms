@@ -8,78 +8,18 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Notifications\ResetPassword as ResetPasswordNotification;
 
-/**
- * App\Models\User.
- *
- * @property int                                                                                                       $id
- * @property string                                                                                                    $name
- * @property string                                                                                                    $email
- * @property string|null                                                                                               $password
- * @property bool                                                                                                      $active
- * @property string|null                                                                                               $confirmation_token
- * @property int                                                                                                       $confirmed
- * @property string|null                                                                                               $remember_token
- * @property string                                                                                                    $locale
- * @property string                                                                                                    $timezone
- * @property string                                                                                                    $slug
- * @property \Carbon\Carbon|null                                                                                       $last_access_at
- * @property \Carbon\Carbon|null                                                                                       $created_at
- * @property \Carbon\Carbon|null                                                                                       $updated_at
- * @property mixed                                                                                                     $avatar
- * @property mixed                                                                                                     $can_delete
- * @property mixed                                                                                                     $can_edit
- * @property mixed                                                                                                     $can_impersonate
- * @property mixed                                                                                                     $formatted_roles
- * @property mixed                                                                                                     $is_super_admin
- * @property \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
- * @property \Illuminate\Database\Eloquent\Collection|\App\Models\SocialLogin[]                                        $providers
- * @property \Illuminate\Database\Eloquent\Collection|\App\Models\Role[]                                               $roles
- *
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User actives()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User findSimilarSlugs($attribute, $config, $slug)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereActive($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereConfirmationToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereConfirmed($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereLastAccessAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereLocale($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User wherePassword($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereRememberToken($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereTimezone($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereUpdatedAt($value)
- * @mixin \Eloquent
- */
 class User extends Authenticatable
 {
     use Notifiable;
 
-    /**
-     * The relationship that are eager loaded.
-     *
-     * @var array
-     */
     protected $with = [
         'roles',
     ];
 
-    /**
-     * The attributes that should be mutated to dates.
-     *
-     * @var array
-     */
     protected $dates = [
         'last_access_at',
     ];
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'name',
         'email',
@@ -88,31 +28,16 @@ class User extends Authenticatable
         'timezone',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password',
         'confirmation_token',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'active' => 'boolean',
     ];
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array
-     */
     protected $appends = [
         'avatar',
         'can_edit',
@@ -160,11 +85,6 @@ class User extends Authenticatable
         return 1 === $this->id;
     }
 
-    /**
-     * Many-to-Many relations with Role.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
     public function roles()
     {
         return $this->belongsToMany(Role::class);
@@ -177,19 +97,11 @@ class User extends Authenticatable
             : $this->roles->implode('display_name', ', ');
     }
 
-    /**
-     * @param $name
-     *
-     * @return bool
-     */
     public function hasRole($name)
     {
         return $this->roles->contains('name', $name);
     }
 
-    /**
-     * @return array
-     */
     public function getPermissions()
     {
         $permissions = [];
@@ -202,7 +114,6 @@ class User extends Authenticatable
             }
         }
 
-        // Add children permissions
         foreach (config('permissions') as $name => $permission) {
             if (isset($permission['children']) && in_array($name, $permissions, true)) {
                 $permissions = array_merge($permissions, $permission['children']);
@@ -212,21 +123,11 @@ class User extends Authenticatable
         return collect($permissions);
     }
 
-    /**
-     * Send the password reset notification.
-     *
-     * @param string $token
-     */
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPasswordNotification($token));
     }
 
-    /**
-     * @param $provider
-     *
-     * @return bool
-     */
     public function getProvider($provider)
     {
         return $this->providers->first(function (SocialLogin $item) use ($provider) {
@@ -234,17 +135,11 @@ class User extends Authenticatable
         });
     }
 
-    /**
-     * @return mixed
-     */
     public function providers()
     {
         return $this->hasMany(SocialLogin::class);
     }
 
-    /**
-     * Get user avatar from gravatar.
-     */
     public function getAvatarAttribute()
     {
         $hash = md5($this->email);
@@ -257,9 +152,6 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
-    /**
-     * @return string
-     */
     public function __toString()
     {
         return $this->name;

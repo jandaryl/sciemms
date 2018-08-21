@@ -64,41 +64,41 @@ return [
         'category'     => 'permissions.categories.blog',
     ],
 
-    'view form_settings' => [
-        'display_name' => 'permissions.view.form_settings.display_name',
-        'description'  => 'permissions.view.form_settings.description',
-        'category'     => 'permissions.categories.form',
-    ],
+    // 'view form_settings' => [
+    //     'display_name' => 'permissions.view.form_settings.display_name',
+    //     'description'  => 'permissions.view.form_settings.description',
+    //     'category'     => 'permissions.categories.form',
+    // ],
 
-    'create form_settings' => [
-        'display_name' => 'permissions.create.form_settings.display_name',
-        'description'  => 'permissions.create.form_settings.description',
-        'category'     => 'permissions.categories.form',
-    ],
+    // 'create form_settings' => [
+    //     'display_name' => 'permissions.create.form_settings.display_name',
+    //     'description'  => 'permissions.create.form_settings.description',
+    //     'category'     => 'permissions.categories.form',
+    // ],
 
-    'edit form_settings' => [
-        'display_name' => 'permissions.edit.form_settings.display_name',
-        'description'  => 'permissions.edit.form_settings.description',
-        'category'     => 'permissions.categories.form',
-    ],
+    // 'edit form_settings' => [
+    //     'display_name' => 'permissions.edit.form_settings.display_name',
+    //     'description'  => 'permissions.edit.form_settings.description',
+    //     'category'     => 'permissions.categories.form',
+    // ],
 
-    'delete form_settings' => [
-        'display_name' => 'permissions.delete.form_settings.display_name',
-        'description'  => 'permissions.delete.form_settings.description',
-        'category'     => 'permissions.categories.form',
-    ],
+    // 'delete form_settings' => [
+    //     'display_name' => 'permissions.delete.form_settings.display_name',
+    //     'description'  => 'permissions.delete.form_settings.description',
+    //     'category'     => 'permissions.categories.form',
+    // ],
 
-    'view form_submissions' => [
-        'display_name' => 'permissions.view.form_submissions.display_name',
-        'description'  => 'permissions.view.form_submissions.description',
-        'category'     => 'permissions.categories.form',
-    ],
+    // 'view form_submissions' => [
+    //     'display_name' => 'permissions.view.form_submissions.display_name',
+    //     'description'  => 'permissions.view.form_submissions.description',
+    //     'category'     => 'permissions.categories.form',
+    // ],
 
-    'delete form_submissions' => [
-        'display_name' => 'permissions.delete.form_submissions.display_name',
-        'description'  => 'permissions.delete.form_submissions.description',
-        'category'     => 'permissions.categories.form',
-    ],
+    // 'delete form_submissions' => [
+    //     'display_name' => 'permissions.delete.form_submissions.display_name',
+    //     'description'  => 'permissions.delete.form_submissions.description',
+    //     'category'     => 'permissions.categories.form',
+    // ],
 
     'view users' => [
         'display_name' => 'permissions.view.users.display_name',
@@ -154,51 +154,51 @@ return [
         'category'     => 'permissions.categories.access',
     ],
 
-    'view metas' => [
-        'display_name' => 'permissions.view.metas.display_name',
-        'description'  => 'permissions.view.metas.description',
-        'category'     => 'permissions.categories.seo',
-    ],
+    // 'view metas' => [
+    //     'display_name' => 'permissions.view.metas.display_name',
+    //     'description'  => 'permissions.view.metas.description',
+    //     'category'     => 'permissions.categories.seo',
+    // ],
 
-    'create metas' => [
-        'display_name' => 'permissions.create.metas.display_name',
-        'description'  => 'permissions.create.metas.description',
-        'category'     => 'permissions.categories.seo',
-    ],
+    // 'create metas' => [
+    //     'display_name' => 'permissions.create.metas.display_name',
+    //     'description'  => 'permissions.create.metas.description',
+    //     'category'     => 'permissions.categories.seo',
+    // ],
 
-    'edit metas' => [
-        'display_name' => 'permissions.edit.metas.display_name',
-        'description'  => 'permissions.edit.metas.description',
-        'category'     => 'permissions.categories.seo',
-    ],
+    // 'edit metas' => [
+    //     'display_name' => 'permissions.edit.metas.display_name',
+    //     'description'  => 'permissions.edit.metas.description',
+    //     'category'     => 'permissions.categories.seo',
+    // ],
 
-    'delete metas' => [
-        'display_name' => 'permissions.delete.metas.display_name',
-        'description'  => 'permissions.delete.metas.description',
-        'category'     => 'permissions.categories.seo',
-    ],
+    // 'delete metas' => [
+    //     'display_name' => 'permissions.delete.metas.display_name',
+    //     'description'  => 'permissions.delete.metas.description',
+    //     'category'     => 'permissions.categories.seo',
+    // ],
 
-    'view redirections' => [
-        'display_name' => 'permissions.view.redirections.display_name',
-        'description'  => 'permissions.view.redirections.description',
-        'category'     => 'permissions.categories.seo',
-    ],
+    // 'view redirections' => [
+    //     'display_name' => 'permissions.view.redirections.display_name',
+    //     'description'  => 'permissions.view.redirections.description',
+    //     'category'     => 'permissions.categories.seo',
+    // ],
 
-    'create redirections' => [
-        'display_name' => 'permissions.create.redirections.display_name',
-        'description'  => 'permissions.create.redirections.description',
-        'category'     => 'permissions.categories.seo',
-    ],
+    // 'create redirections' => [
+    //     'display_name' => 'permissions.create.redirections.display_name',
+    //     'description'  => 'permissions.create.redirections.description',
+    //     'category'     => 'permissions.categories.seo',
+    // ],
 
-    'edit redirections' => [
-        'display_name' => 'permissions.edit.redirections.display_name',
-        'description'  => 'permissions.edit.redirections.description',
-        'category'     => 'permissions.categories.seo',
-    ],
+    // 'edit redirections' => [
+    //     'display_name' => 'permissions.edit.redirections.display_name',
+    //     'description'  => 'permissions.edit.redirections.description',
+    //     'category'     => 'permissions.categories.seo',
+    // ],
 
-    'delete redirections' => [
-        'display_name' => 'permissions.delete.redirections.display_name',
-        'description'  => 'permissions.delete.redirections.description',
-        'category'     => 'permissions.categories.seo',
-    ],
+    // 'delete redirections' => [
+    //     'display_name' => 'permissions.delete.redirections.display_name',
+    //     'description'  => 'permissions.delete.redirections.description',
+    //     'category'     => 'permissions.categories.seo',
+    // ],
 ];
