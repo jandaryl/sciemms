@@ -28,7 +28,7 @@ export default (app, i18n, newPostsCount, pendingPostsCount) => {
     {
       title: true,
       name: i18n.t('labels.backend.sidebar.forms'),
-      access: app.user.can('view form_submissions') && app.formSubmissions || app.user.can('view form_settings') && app.formSettings
+      access: app.formSubmissions || app.formSettings
     },
     {
       name: i18n.t('labels.backend.form_submissions.titles.main'),
@@ -70,7 +70,7 @@ export default (app, i18n, newPostsCount, pendingPostsCount) => {
     {
       title: true,
       name: i18n.t('labels.backend.sidebar.seo'),
-      access: app.user.can('view metas') && app.metas || app.user.can('view redirections') && app.redirection
+      access: app.metas || app.redirection
     },
     {
       name: i18n.t('labels.backend.metas.titles.main'),

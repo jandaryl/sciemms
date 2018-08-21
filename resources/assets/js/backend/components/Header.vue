@@ -63,7 +63,7 @@
         </template>
       </HeaderDropdown>
     </b-navbar-nav>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
   </Header>
 </template>
 
