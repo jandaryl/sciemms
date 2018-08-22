@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Facades\Gate;
+use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Gate;
 
 class FormSubmission extends Model
 {
+    use Cachable;
+
     protected $appends = [
         'can_edit',
         'can_delete'

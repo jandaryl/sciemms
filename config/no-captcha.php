@@ -5,8 +5,8 @@ return [
      |  Credentials
      | ------------------------------------------------------------------------------------------------
      */
-    'secret'  => getenv('NOCAPTCHA_SECRET') ?: 'no-captcha-secret',
-    'sitekey' => getenv('NOCAPTCHA_SITEKEY') ?: 'no-captcha-sitekey',
+    'secret'  => env('NOCAPTCHA_SECRET',  '6LdmHGcUAAAAAAvwxsE5AunL9NPHA9RxXF-0ISMH') ?: 'no-captcha-secret',
+    'sitekey' => env('NOCAPTCHA_SITEKEY', '6LdmHGcUAAAAAAEmsrphPJKqgUGLqgN-qUbMxLaG') ?: 'no-captcha-sitekey',
 
     /* ------------------------------------------------------------------------------------------------
      |  Localization
