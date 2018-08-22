@@ -52,7 +52,9 @@ return [
         'attributes' => [
             'prefix' => 'log-viewer',
 
-            'middleware' => ['web', 'auth', 'can:access backend'],
+            // Uncomment this after you configure your mail services.
+            // 'middleware' => ['web', 'auth', 'can:access backend'],
+            'middleware' => ['web'],
         ],
     ],
 
