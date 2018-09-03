@@ -100,7 +100,6 @@ export default {
         destroy: this.$t('labels.backend.posts.actions.destroy'),
         publish: this.$t('labels.backend.posts.actions.publish'),
         pin: this.$t('labels.backend.posts.actions.pin'),
-        promote: this.$t('labels.backend.posts.actions.promote')
       }
     }
   },
