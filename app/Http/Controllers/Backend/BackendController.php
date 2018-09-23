@@ -7,18 +7,26 @@ use App\Http\Controllers\Controller;
 
 class BackendController extends Controller
 {
+
     /**
-     * Show admin home.
+     * Get the admin home.
      *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index(Request $request)
+    public function index()
     {
         return view('backend.home');
     }
 
+
+    /**
+     * Redirect the response.
+     *
+     * @param Request $request
+     * @param $message
+     * @param string $type
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     */
     protected function redirectResponse(Request $request, $message, $type = 'success')
     {
         if ($request->wantsJson()) {
