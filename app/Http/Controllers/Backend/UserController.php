@@ -34,11 +34,6 @@ class UserController extends BackendController
         $this->roles = $roles;
     }
 
-    public function getActiveUserCounter()
-    {
-        return $this->users->query()->whereActive(true)->count();
-    }
-
     /**
      * Show the application dashboard.
      *
