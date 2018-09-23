@@ -20,7 +20,7 @@ class BackendController extends Controller
 
 
     /**
-     * Redirect the response.
+     * Redirect the request.
      *
      * @param Request $request
      * @param $message
