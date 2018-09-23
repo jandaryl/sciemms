@@ -331,7 +331,7 @@ class PostController extends BackendController
     }
 
     /**
-     * Search the data.
+     * Search the request data.
      *
      * @param Request $request
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Symfony\Component\HttpFoundation\BinaryFileResponse
@@ -385,7 +385,8 @@ class PostController extends BackendController
     }
 
     /**
-     * @param $query
+     * Filter the own posts from query.
+     *
      * @return PostRepository
      */
     public function filterOwnPosts($query)
@@ -399,6 +400,8 @@ class PostController extends BackendController
     }
 
     /**
+     * Build the posts query.
+     * 
      * @return Builder
      */
     public function postQuery(): Builder
