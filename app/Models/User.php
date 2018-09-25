@@ -78,6 +78,11 @@ class User extends Authenticatable
         return $this->confirmed === true;
     }
 
+    public function isRemembered()
+    {
+        return ! empty($this->remember_token);
+    }
+
     public function getCanImpersonateAttribute()
     {
         if (Gate::check('impersonate users')) {

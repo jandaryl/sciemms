@@ -2,9 +2,10 @@
 
 namespace Tests\Feature;
 
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Support\Facades\Auth;
 use Tests;
 use Tests\BrowserKitTestCase;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class SubmitLoginFormTest extends BrowserKitTestCase
 {
@@ -13,7 +14,7 @@ class SubmitLoginFormTest extends BrowserKitTestCase
     /** @test */
     public function standard_user_can_sign_in_the_login_form_then_see_email_confirmation_message_if_not_yet_confirmed()
     {
-        $standard_user = $this->standardUser([['password' => 'secret']]);
+        $standard_user = $this->standardUser(['password' => 'secret']);
 
         $this->visit('/login')
              ->type($standard_user->email, 'email')
@@ -29,7 +30,7 @@ class SubmitLoginFormTest extends BrowserKitTestCase
     /** @test */
     public function super_admin_user_can_sign_in_the_login_form_then_see_dashboard()
     {
-        $super_admin_user = $this->superAdminUser();
+        $super_admin_user = $this->superAdminUser(['password' => 'secret']);
 
         $this->visit('/login')
              ->type($super_admin_user->email, 'email')
@@ -58,5 +59,20 @@ class SubmitLoginFormTest extends BrowserKitTestCase
              ->press('Send reset password link')
              ->seePageIs('/password/reset')
              ->see('We have e-mailed your password reset link!');
+    }
+
+    /** @test */
+    public function users_can_be_remembered_if_they_check_the_remember_me()
+    {
+        $any_type_user = $this->standardUser(['password' => 'secret']);
+
+        $this->visit('/login')
+             ->type($any_type_user->email, 'email')
+             ->type('secret', 'password')
+             ->check('remember')
+             ->press('Login')
+             ->seePageIs('/user')
+             ->see('My account')
+             ->assertFalse($any_type_user->isRemembered());
     }
 }
