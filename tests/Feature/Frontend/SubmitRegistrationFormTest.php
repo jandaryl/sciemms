@@ -11,7 +11,7 @@ class SubmitRegistrationFormTest extends BrowserKitTestCase
     use DatabaseMigrations;
 
     /** @test */
-    public function new_user_can_sign_up_in_registration_form_then_see_the_confirmation_message()
+    public function new_standard_user_can_sign_up_in_registration_form_then_see_the_email_confirmation_message()
     {
         $this->ignoreCaptcha();
         $this->user();

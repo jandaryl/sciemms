@@ -73,6 +73,11 @@ class User extends Authenticatable
         );
     }
 
+    public function isConfirmed()
+    {
+        return $this->confirmed === true;
+    }
+
     public function getCanImpersonateAttribute()
     {
         if (Gate::check('impersonate users')) {
