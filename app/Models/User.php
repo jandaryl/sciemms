@@ -66,6 +66,13 @@ class User extends Authenticatable
         );
     }
 
+    public function canAccessBackend()
+    {
+        return $this->id === auth()->id() && (
+            Gate::check('access backend')
+        );
+    }
+
     public function getCanImpersonateAttribute()
     {
         if (Gate::check('impersonate users')) {
