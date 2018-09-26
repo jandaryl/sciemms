@@ -80,6 +80,7 @@ class User extends Authenticatable
 
     public function isRemembered()
     {
+        // Todo : Test the remember checking.
         return ! empty($this->remember_token);
     }
 
