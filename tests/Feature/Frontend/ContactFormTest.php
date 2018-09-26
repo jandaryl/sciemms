@@ -6,12 +6,12 @@ use Tests;
 use Tests\BrowserKitTestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
-class SubmitContactFormTest  extends BrowserKitTestCase
+class ContactFormTest  extends BrowserKitTestCase
 {
     use DatabaseMigrations;
 
     /** @test */
-    public function any_users_can_send_in_contact_form_then_see_the_message_sent()
+    public function any_users_can_send_in_contact_form()
     {
         $this->ignoreCaptcha();
 

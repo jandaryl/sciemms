@@ -7,7 +7,7 @@ use Tests\BrowserKitTestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 
-class ViewHomeTest extends BrowserKitTestCase
+class HomeTest extends BrowserKitTestCase
 {
     use DatabaseMigrations;
 
@@ -41,7 +41,7 @@ class ViewHomeTest extends BrowserKitTestCase
     }
 
     /** @test */
-    public function users_can_see_a_my_name_when_logged_in()
+    public function users_can_see_a_its_name_when_logged_in()
     {
         $user = $this->user();
 

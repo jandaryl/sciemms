@@ -6,7 +6,7 @@ use Tests;
 use Tests\BrowserKitTestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
-class ViewAboutTest extends BrowserKitTestCase
+class AboutTest extends BrowserKitTestCase
 {
     use DatabaseMigrations;
 

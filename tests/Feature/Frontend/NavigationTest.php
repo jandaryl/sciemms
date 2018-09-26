@@ -6,7 +6,7 @@ use Tests;
 use Tests\BrowserKitTestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
-class ViewNavBarTest extends BrowserKitTestCase
+class NavigationTest extends BrowserKitTestCase
 {
     use DatabaseMigrations;
 
@@ -113,6 +113,20 @@ class ViewNavBarTest extends BrowserKitTestCase
             $this->seeLink('Administration')
                  ->click('Administration')
                  ->seePageIs('/admin');
+        }
+    }
+
+    /** @test */
+    public function user_can_see_the_email_confirmation_message_if_not_yet_confirmed()
+    {
+        $baseUrl = $this->baseUrl;
+        $user = $this->user();
+
+        $this->actingAs($user)
+             ->visit('/');
+
+        if ($user->isConfirmed()) {
+            $this->see('Your account will be in limited mode as long as your email remains not confirmed. <a href="' . $this->baseUrl . '/user/confirmation/send">Click here</a> in order to resend mail confirmation.');
         }
     }
 
