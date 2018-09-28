@@ -1,5 +1,5 @@
 /**
- * Client Window Settings
+ * Backend Client Window Settings
  */
 import './load-client-scripts'
 

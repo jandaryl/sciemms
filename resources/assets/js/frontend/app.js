@@ -1,19 +1,36 @@
+/**
+ * Frontend Client Window Settings
+ */
 import loadClientScripts from './load-client-scripts'
 
-// Vue & axios
+// Vue & Axios with config.
 import Vue from 'vue'
 import { axios } from '../axios-config'
 
+/**
+ * Babel-polyfill & Bootstrap Vue
+ */
 import 'babel-polyfill'
 import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm'
 
+/**
+ * Vue helper functions.
+ */
 import { createLocales } from '../vue-i18n-config'
 
+/**
+ * Set the axios in window for global access.
+ */
 window.axios = axios
 
-// Bootstrap Vue
+/**
+ * Use Bootstrap Vue
+ */
 Vue.use(BootstrapVue)
 
+/**
+ * The create app function will use to render into frontend.
+ */
 export function createApp () {
   const i18n = createLocales(window.locale)
 
@@ -24,5 +41,8 @@ export function createApp () {
   return { app }
 }
 
-// Load Client Scripts
+/**
+ * Call the Load Client Scripts then passed the createApp function.
+ * To get the new instance of vue and i18n.
+ */
 loadClientScripts(createApp)

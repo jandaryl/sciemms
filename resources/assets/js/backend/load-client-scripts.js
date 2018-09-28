@@ -1,8 +1,8 @@
 /**
  * Tip:
- *     Sweetalert2 - for beautiful popup boxes.
- *     Flatpicker  - for elegant datetime picker.
- *     FlatpickrLocaleFr - for Flatpicker localization.
+ *     Sweetalert2        - for beautiful popup boxes.
+ *     Flatpicker         - for elegant datetime picker.
+ *     FlatpickrLocaleFr  - for datetime picker localization.
  */
 import swal from 'sweetalert2'
 import Flatpickr from 'flatpickr'
