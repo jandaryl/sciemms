@@ -1,3 +1,6 @@
+/**
+ * Use the font awesome icons 8 brands.
+ */
 import {
   faHome
 } from '@fortawesome/fontawesome-free-solid'

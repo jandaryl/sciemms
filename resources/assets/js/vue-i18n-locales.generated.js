@@ -1,3 +1,12 @@
+/**
+ * These are the generated data from laravel localization.
+ * It will serve as data source of vue components in your app.
+ *
+ * Note :
+ *      If you update the laravel localization data you need to run this in your artisan cli.
+ *          "php artisan vue-i18n:generate"
+ *       Then it will generate the updated data for your vue components.
+ */
 export default {
     "ar": {
         "alerts": {
