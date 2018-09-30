@@ -5,5 +5,12 @@
     }],
     "stage-3"
   ],
-  "plugins": ["lodash"]
+  "plugins": ["lodash"],
+  "env": {
+    "test": {
+      "presets": [
+        ["env", { "targets": { "node": "current" }}]
+      ]
+    }
+  }
 }
