@@ -9,7 +9,8 @@
     "lint": "eslint --ext .js,.vue resources/assets/js",
     "test": "jest",
     "test-watch": "npm run test -- --notify --detectOpenHandles --watch",
-    "test-snap": "npm run test -- -u"
+    "test-snap": "npm run test -- -u",
+    "test-coverage": "npm run test -- --coverage"
   },
   "devDependencies": {
     "@coreui/coreui": "^2.0.3",
