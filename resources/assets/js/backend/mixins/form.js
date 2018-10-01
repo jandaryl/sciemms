@@ -1,5 +1,14 @@
+/**
+ * Use the Axios Library
+ */
 import axios from 'axios'
 
+/**
+ * This is a mixins type, it is like traits in php world.
+ * The responsibility of this file is to handle form.
+ * It will fetch data by using Axios as Ajax.
+ * And it also use to submit form request.
+ */
 export default {
   props: ['id'],
   data () {

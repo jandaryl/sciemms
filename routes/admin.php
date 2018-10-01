@@ -28,7 +28,7 @@ if (config('features.form-submissions'))
         ['middleware' => ['can:view form_submissions']],
         function ()
         {
-            Route::get('form_submissions/counter',                  'FormSubmissionController@getFormSubmissionCounter')->name('form_submissions.counter');
+            Route::get('form_submissions/counter',                  'DashboardController@getFormSubmissionCounter')->name('form_submissions.counter');
             Route::get('form_submissions/search',                   'FormSubmissionController@search')->name('form_submissions.search');
             Route::get('form_submissions/{form_submission}/show',   'FormSubmissionController@show')->name('form_submissions.show');
             Route::post('form_submissions/batch_action',            'FormSubmissionController@batchAction')->name('form_submissions.batch_action');
@@ -45,7 +45,7 @@ Route::group(
     ['middleware' => ['can:view users']],
     function ()
     {
-        Route::get('users/active_counter',                      'UserController@getActiveUserCounter')->name('users.active.counter');
+        Route::get('users/active_counter',                      'DashboardController@getActiveUserCounter')->name('users.active.counter');
         Route::get('users/roles',                               'UserController@getRoles')->name('users.get_roles');
         Route::get('users/search',                              'UserController@search')->name('users.search');
         Route::get('users/{user}/show',                         'UserController@show')->name('users.show');
@@ -115,9 +115,9 @@ if (config('blog.enabled')) {
         ['middleware' => ['can:view own posts']],
         function ()
         {
-            Route::get('posts/draft_counter',               'PostController@getDraftPostCounter')->name('posts.draft.counter');
-            Route::get('posts/pending_counter',             'PostController@getPendingPostCounter')->name('posts.pending.counter');
-            Route::get('posts/published_counter',           'PostController@getPublishedPostCounter')->name('posts.published.counter');
+            Route::get('posts/draft_counter',               'DashboardController@getDraftPostCounter')->name('posts.draft.counter');
+            Route::get('posts/pending_counter',             'DashboardController@getPendingPostCounter')->name('posts.pending.counter');
+            Route::get('posts/published_counter',           'DashboardController@getPublishedPostCounter')->name('posts.published.counter');
             Route::get('posts/latest',                      'PostController@getLastestPosts')->name('posts.latest');
             Route::get('posts/search',                      'PostController@search')->name('posts.search');
             Route::get('posts/{post}/show',                 'PostController@show')->name('posts.show');

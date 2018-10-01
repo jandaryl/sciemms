@@ -24,21 +24,74 @@ class FormSubmissionController extends BackendController
         $this->formSubmissions = $formSubmissions;
     }
 
-    public function getFormSubmissionCounter()
-    {
-        return $this->formSubmissions->query()->count();
-    }
-
     /**
-     * Show the application dashboard.
+     * Search the data from user request.
      *
      * @param Request $request
-     *
      * @throws \Exception
-     *
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Illuminate\Http\JsonResponse|\Symfony\Component\HttpFoundation\BinaryFileResponse
      */
     public function search(Request $request)
+    {
+        return $this->requestData($request);
+    }
+
+    /**
+     * Show the Form Submission
+     *
+     * @param FormSubmission $form_submission
+     * @return FormSubmission
+     */
+    public function show(FormSubmission $form_submission)
+    {
+        return $form_submission;
+    }
+
+    /**
+     * Delete the Form Submission
+     *
+     * @param FormSubmission $form_submission
+     * @param Request $request
+     * @return mixed
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function destroy(FormSubmission $form_submission, Request $request)
+    {
+        $this->canDeleteFormSubmissions();
+
+        $this->formSubmissions->destroy($form_submission);
+
+        return $this->redirectResponse($request, __('alerts.backend.form_submissions.deleted'));
+    }
+
+    /**
+     * Batch actions from the form submissions selected.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return array|\Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function batchAction(Request $request)
+    {
+        $action = $request->get('action');
+        $ids = $request->get('ids');
+
+        switch ($action) {
+            case 'destroy':
+                return $this->deleteFormSubmissions($request, $ids);
+                break;
+        }
+
+        return $this->redirectResponse($request, __('alerts.backend.actions.invalid'), 'error');
+    }
+
+    /**
+     * Search the request data.
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator|\Symfony\Component\HttpFoundation\BinaryFileResponse
+     */
+    public function requestData(Request $request)
     {
         $requestSearchQuery = new RequestSearchQuery($request, $this->formSubmissions->query(), [
             'data',
@@ -69,51 +122,31 @@ class FormSubmissionController extends BackendController
         ]);
     }
 
+
     /**
-     * @param FormSubmission $form_submission
+     * Delete the form submissions from request.
      *
-     * @return FormSubmission
+     * @param Request $request
+     * @param $ids
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function show(FormSubmission $form_submission)
+    public function deleteFormSubmissions(Request $request, $ids)
     {
-        return $form_submission;
+        $this->canDeleteFormSubmissions();
+
+        $this->formSubmissions->batchDestroy($ids);
+
+        return $this->redirectResponse($request, __('alerts.backend.form_submissions.bulk_destroyed'));
     }
 
     /**
-     * @param FormSubmission $form_submission
-     * @param Request        $request
+     *  Check if user can delete the form submissions.
      *
-     * @return mixed
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function destroy(FormSubmission $form_submission, Request $request)
+    public function canDeleteFormSubmissions(): void
     {
         $this->authorize('delete form_submissions');
-
-        $this->formSubmissions->destroy($form_submission);
-
-        return $this->redirectResponse($request, __('alerts.backend.form_submissions.deleted'));
-    }
-
-    /**
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return array|\Illuminate\Http\RedirectResponse
-     */
-    public function batchAction(Request $request)
-    {
-        $action = $request->get('action');
-        $ids = $request->get('ids');
-
-        switch ($action) {
-            case 'destroy':
-                $this->authorize('delete form_submissions');
-
-                $this->formSubmissions->batchDestroy($ids);
-
-                return $this->redirectResponse($request, __('alerts.backend.form_submissions.bulk_destroyed'));
-                break;
-        }
-
-        return $this->redirectResponse($request, __('alerts.backend.actions.invalid'), 'error');
     }
 }

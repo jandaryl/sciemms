@@ -45,7 +45,6 @@ class AjaxController extends Controller
      * Global index search.
      *
      * @param \Illuminate\Http\Request $request
-     *
      * @return mixed
      */
     public function search(Request $request)
@@ -55,13 +54,11 @@ class AjaxController extends Controller
         return empty($query) ? [] : $this->posts->search($query)->take(50)->get();
     }
 
+
     /**
-     * Search internal transatables routes.
+     * Search the routes.
      *
      * @param Request $request
-     *
-     * @throws \InvalidArgumentException
-     *
      * @return array
      */
     public function routesSearch(Request $request)
@@ -79,13 +76,11 @@ class AjaxController extends Controller
         ];
     }
 
+
     /**
-     * Search tags.
+     * Search by tags.
      *
      * @param Request $request
-     *
-     * @throws \InvalidArgumentException
-     *
      * @return array
      */
     public function tagsSearch(Request $request)
@@ -101,22 +96,20 @@ class AjaxController extends Controller
         ];
     }
 
+
     /**
-     * @param Request $request
+     * Upload the image.
      *
+     * @param Request $request
      * @return array
      */
     public function imageUpload(Request $request)
     {
         $uploadedImage = $request->file('upload');
 
-        // Resize image below 600px width if needed
-        $image = Image::make($uploadedImage->openFile())->widen(600, function ($constraint) {
-            $constraint->upsize();
-        });
+        $image = $this->resizeImage($uploadedImage);
 
-        $imagePath = "/tmp/{$uploadedImage->getClientOriginalName()}";
-        Storage::disk('public')->put($imagePath, $image->stream());
+        $imagePath = $this->imagePath($uploadedImage, $image);
 
         return [
             'uploaded' => true,
@@ -124,5 +117,37 @@ class AjaxController extends Controller
             'width'    => $image->width(),
             'height'   => $image->height(),
         ];
+    }
+
+
+    /**
+     * Resize the image.
+     *
+     * @param $uploadedImage
+     * @return \Intervention\Image\Image
+     */
+    public function resizeImage($uploadedImage): \Intervention\Image\Image
+    {
+        // Resize image below 600px width if needed
+        $image = Image::make($uploadedImage->openFile())->widen(600, function ($constraint) {
+            $constraint->upsize();
+        });
+
+        return $image;
+    }
+
+
+    /**
+     * Path of the image.
+     *
+     * @param $uploadedImage
+     * @param $image
+     * @return string
+     */
+    public function imagePath($uploadedImage, $image): string
+    {
+        $imagePath = "/tmp/{$uploadedImage->getClientOriginalName()}";
+        Storage::disk('public')->put($imagePath, $image->stream());
+        return $imagePath;
     }
 }

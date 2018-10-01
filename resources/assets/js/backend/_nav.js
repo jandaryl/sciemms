@@ -1,3 +1,7 @@
+/**
+ * Define the backend dashboard navigation with permissions.
+ * It will set the name, url, icon, and access.
+ */
 export default (app, i18n, newPostsCount, pendingPostsCount) => {
   return [
     {

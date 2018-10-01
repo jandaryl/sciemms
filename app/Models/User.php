@@ -66,6 +66,24 @@ class User extends Authenticatable
         );
     }
 
+    public function canAccessBackend()
+    {
+        return $this->id === auth()->id() && (
+            Gate::check('access backend')
+        );
+    }
+
+    public function isConfirmed()
+    {
+        return $this->confirmed === true;
+    }
+
+    public function isRemembered()
+    {
+        // Todo : Test the remember checking.
+        return ! empty($this->remember_token);
+    }
+
     public function getCanImpersonateAttribute()
     {
         if (Gate::check('impersonate users')) {

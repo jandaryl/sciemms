@@ -1,10 +1,17 @@
+/**
+ * Use the Vue and Vue Router
+ */
 import Vue from 'vue'
 import Router from 'vue-router'
 
-// Containers
+/**
+ * Use the Full Component
+ */
 import Full from '../containers/Full'
 
-// Views
+/**
+ * Use the components for Vue Router
+ */
 import Search from '../views/Search'
 import Dashboard from '../views/Dashboard'
 import PostForm from '../views/PostForm'
@@ -22,8 +29,15 @@ import MetaList from '../views/MetaList'
 import RedirectionForm from '../views/RedirectionForm'
 import RedirectionList from '../views/RedirectionList'
 
+/**
+ * Use the Vue Router in the Vue instances.
+ */
 Vue.use(Router)
 
+/**
+ * Function that set the base path and localization.
+ * It will assign the all routes for your vue.
+ */
 export function createRouter (base, i18n) {
   return new Router({
     mode: 'history',

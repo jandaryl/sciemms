@@ -11,14 +11,13 @@
 |
 */
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
     return [
         'name'      => $faker->name,
         'email'     => $faker->unique()->safeEmail,
         'password'  => bcrypt('secret'),
         'active'    => true,
-        'confirmed' => true,
+        'confirmed' => false,
         'locale'    => app()->getLocale(),
         'timezone'  => config('app.timezone'),
     ];
