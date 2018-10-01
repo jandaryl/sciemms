@@ -1,4 +1,4 @@
-# SCIEMMS App
+# SCIEMMS App  [![Build Status](https://travis-ci.org/jandaryl/sciemms.svg?branch=master)](https://travis-ci.org/jandaryl/sciemms)
 
 ## Install
 
