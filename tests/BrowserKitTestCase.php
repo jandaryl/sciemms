@@ -9,7 +9,7 @@ abstract class BrowserKitTestCase extends BaseTestCase
 {
     use CreatesApplication;
 
-    public $baseUrl = 'http://thesis.test';
+    public $baseUrl = 'https://sciemms.frb.io';
 
     protected function user()
     {
