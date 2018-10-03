@@ -83,7 +83,7 @@
       "vue"
     ],
     "moduleNameMapper": {
-      "^@/(.*)$": "<rootDir>/resources/assets/js/backend/$1"
+      "^@/(.*)$": "<rootDir>/resources/assets/js/$1"
     },
     "transform": {
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
@@ -98,7 +98,6 @@
         "<rootDir>/vendor",
         "<rootDir>/.git",
         "<rootDir>/public",
-        "<rootDir>/resources",
         "<rootDir>/app"
     ]
   },

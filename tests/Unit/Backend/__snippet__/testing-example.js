@@ -32,3 +32,40 @@ describe('Foo', () => {
     expect(wrapper.find('.error').exists()).toBeFalsy()
   })
 })
+
+
+
+
+
+
+
+
+
+
+import { mount, createLocalVue } from "@vue/test-utils"
+import App from "@/backend/App.vue"
+import VueRouter from "vue-router"
+import NestedRoute from "@/backend/components/Full.vue"
+import routes from "@/backend/routes/index.js"
+
+const localVue = createLocalVue()
+localVue.use(VueRouter)
+
+jest.mock("@/backend/components/Full.vue", () => ({
+  name: "NestedRoute",
+  render: h => h("div")
+}))
+
+describe("App", () => {
+  it("renders a child component via routing", () => {
+    const router = new VueRouter({ routes })
+    const wrapper = mount(App, {
+      localVue,
+      router
+    })
+
+    router.push("/")
+
+    expect(wrapper.find(NestedRoute).exists()).toBe(true)
+  })
+})

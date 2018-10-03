@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import Component from '@/Counter.vue'
+import Component from '@/examples/Counter.vue'
 
 describe('Component', () => {
   it('is a Vue instance', () => {
