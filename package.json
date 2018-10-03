@@ -10,7 +10,8 @@
     "test": "jest",
     "test-watch": "npm run test -- --notify --detectOpenHandles --watch",
     "test-snap": "npm run test -- -u",
-    "test-coverage": "npm run test -- --coverage"
+    "test-coverage": "npm run test -- --coverage",
+    "test-docs": "npm run test -- --verbose"
   },
   "devDependencies": {
     "@coreui/coreui": "^2.0.3",
