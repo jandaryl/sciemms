@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for resources/assets/js/backend/views/Dashboard.vue</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../../../index.html">All files</a> / <a href="index.html">resources/assets/js/backend/views</a> Dashboard.vue
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">20% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>1/5</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/6</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/2</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">20% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>1/5</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
+  &lt;div&gt;
+    &lt;b-row&gt;
+      &lt;b-col xl="6"&gt;
+        &lt;b-row v-if="this.$app.user.can('view own posts')"&gt;
+          &lt;b-col sm&gt;
+            &lt;b-card bg-variant="danger" text-variant="white"&gt;
+              &lt;h4 class="mb-0"&gt;{{ this.$store.state.counters.newPostsCount }}&lt;/h4&gt;
+              &lt;p&gt;{{ $t('labels.backend.dashboard.new_posts') }}&lt;/p&gt;
+            &lt;/b-card&gt;
+          &lt;/b-col&gt;
+          &lt;b-col sm&gt;
+            &lt;b-card bg-variant="warning" text-variant="white"&gt;
+              &lt;h4 class="mb-0"&gt;{{ this.$store.state.counters.pendingPostsCount }}&lt;/h4&gt;
+              &lt;p&gt;{{ $t('labels.backend.dashboard.pending_posts') }}&lt;/p&gt;
+            &lt;/b-card&gt;
+          &lt;/b-col&gt;
+          &lt;b-col sm&gt;
+            &lt;b-card bg-variant="success" text-variant="white"&gt;
+              &lt;h4 class="mb-0"&gt;{{ this.$store.state.counters.publishedPostsCount }}&lt;/h4&gt;
+              &lt;p&gt;{{ $t('labels.backend.dashboard.published_posts') }}&lt;/p&gt;
+            &lt;/b-card&gt;
+          &lt;/b-col&gt;
+        &lt;/b-row&gt;
+        &lt;b-row&gt;
+          &lt;b-col sm v-if="this.$app.user.can('view users')"&gt;
+            &lt;b-card bg-variant="primary" text-variant="white"&gt;
+              &lt;h4 class="mb-0"&gt;{{ this.$store.state.counters.activeUsersCount }}&lt;/h4&gt;
+              &lt;p&gt;{{ $t('labels.backend.dashboard.active_users') }}&lt;/p&gt;
+            &lt;/b-card&gt;
+          &lt;/b-col&gt;
+          &lt;b-col sm v-if="this.$app.user.can('view form_submissions') &amp;&amp; this.$app.formSubmissions"&gt;
+            &lt;b-card bg-variant="info" text-variant="white"&gt;
+              &lt;h4 class="mb-0"&gt;{{ this.$store.state.counters.formSubmissionsCount }}&lt;/h4&gt;
+              &lt;p&gt;{{ $t('labels.backend.dashboard.form_submissions') }}&lt;/p&gt;
+            &lt;/b-card&gt;
+          &lt;/b-col&gt;
+        &lt;/b-row&gt;
+      &lt;/b-col&gt;
+&nbsp;
+      &lt;b-col xl="6" v-if="this.$app.user.can('view own posts')"&gt;
+        &lt;b-card&gt;
+          &lt;h3 class="card-title" slot="header"&gt;{{ $t('labels.backend.dashboard.last_posts') }}&lt;/h3&gt;
+          &lt;b-table striped bordered hover show-empty :fields="post_fields" :items="posts"
+                   :empty-text="$t('labels.no_results')"&gt;
+            &lt;template slot="title" slot-scope="row"&gt;
+              &lt;router-link :to="`/posts/${row.item.id}/edit`"&gt;
+                {{ row.value }}
+              &lt;/router-link&gt;
+            &lt;/template&gt;
+            &lt;template slot="status" slot-scope="row"&gt;
+              &lt;b-badge :variant="row.item.state"&gt;{{ $t(row.item.status_label) }}&lt;/b-badge&gt;
+            &lt;/template&gt;
+            &lt;template slot="pinned" slot-scope="row"&gt;
+              &lt;b-badge :variant="row.value ? 'success' : 'danger'"&gt;{{ row.value ? $t('labels.yes') : $t('labels.no') }}
+              &lt;/b-badge&gt;
+            &lt;/template&gt;
+          &lt;/b-table&gt;
+          &lt;b-button to="/posts" variant="primary" class="float-right"&gt;
+            {{ $t('labels.backend.dashboard.all_posts') }}
+          &lt;/b-button&gt;
+        &lt;/b-card&gt;
+      &lt;/b-col&gt;
+    &lt;/b-row&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&nbsp;
+&lt;script&gt;
+import axios from 'axios'
+&nbsp;
+export default {
+  name: 'Dashboard',
+<span class="fstat-no" title="function not covered" >  data () {</span>
+<span class="cstat-no" title="statement not covered" >    return {</span>
+      post_fields: {
+        title: {label: this.$t('validation.attributes.title')},
+        status: {label: this.$t('validation.attributes.status')},
+        pinned: {label: this.$t('validation.attributes.pinned')},
+        summary: {label: this.$t('validation.attributes.summary')},
+        published_at: {label: this.$t('validation.attributes.published_at'), 'class': 'text-center'}
+      },
+      posts: []
+    }
+  },
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >  async created () {</span></span>
+    if (this.$app.user.can('view own posts')) {
+<span class="cstat-no" title="statement not covered" >      let {data} = await axios.get(this.$app.route('admin.posts.latest'))</span>
+<span class="cstat-no" title="statement not covered" >      this.posts = data</span>
+    }
+  }
+}
+&lt;/script&gt;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Oct 04 2018 00:46:21 GMT-0400 (Eastern Daylight Time)
+</div>
+</div>
+<script src="../../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../../sorter.js"></script>
+</body>
+</html>

@@ -99,39 +99,39 @@ let visit = route => {
 
  // findText() =  findText("span")
 
-  wrapper.find("span").text()
+  // wrapper.find("span").text()
 
  // findAllText() =  findAllText("span")
 
-  wrapper.findAll("span").text()
+  // wrapper.findAll("span").text()
 
  // findValue() =  findValue("span")
 
-  wrapper.find("span").element.value
+  // wrapper.find("span").element.value
 
 // isExists() = isExists('does-not-exist')
 
-  wrapper.find('does-not-exist').exists()
+  // wrapper.find('does-not-exist').exists()
 
 // isVisible() = isVisible('span')
 
-  wrapper.find("span").isVisible()
+  // wrapper.find("span").isVisible()
 
 
 // isCalled() = isCalled(jest.fn())
 
-  expect(jest.fn()).toHaveBeenCalled()
+  // expect(jest.fn()).toHaveBeenCalled()
 
 // assertFalse() or false() = assertFalse(getErrors())
 
-  expect(getErrors()).toBeFalsy()
+  // expect(getErrors()).toBeFalsy()
 
 // assertTrue() or true() = assertTrue(getErrors())
 
-  expect(true()).toBeTruthy();
+  // expect(true()).toBeTruthy();
 
 // assertNull() or null() = assertNull(getNull())
-
+/*
   expect(null()).toBeNull();
 
 // assertUndefined() or undifined() = assertUndefined(undefinedVar())
@@ -193,3 +193,4 @@ let visit = route => {
 // hasProperty = hasProperty(houseForSale, 'bedrooms', 4)
 
   expect(houseForSale).toHaveProperty('bedrooms', 4)
+*/

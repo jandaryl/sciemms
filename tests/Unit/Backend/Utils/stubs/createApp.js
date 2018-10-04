@@ -1,60 +1,60 @@
 /**
  * Client Window Settings
  */
-import './load-client-scripts'
+import { windowSettings, windowRoute } from './load-client-scripts'
 
 /**
  * Vue & Axios with config.
  */
 import Vue from 'vue'
-import '../axios-config'
+import '@/axios-config'
 
-/**
- * Babel-polyfill & Bootstrap Vue
- */
-import 'babel-polyfill'
-import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm'
+// /**
+//  * Babel-polyfill & Bootstrap Vue
+//  */
+// import 'babel-polyfill'
+// import BootstrapVue from '../../../../node_modules/bootstrap-vue/dist/bootstrap-vue.esm'
 
-/**
- * Vendor plugins components.
- */
-import '../../vendor/coreui/components'
-import DataTable from './components/Plugins/DataTable'
-import RichTextEditor from './components/Plugins/RichTextEditor'
-import DateTimePicker from './components/Plugins/DateTimePicker'
-import Switch from './components/Plugins/Switch'
-import vSelect from './components/Plugins/Select'
+// /**
+//  * Vendor plugins components.
+//  */
+// import '../../vendor/coreui/components'
+// import DataTable from '@/backend/components/Plugins/DataTable'
+// import RichTextEditor from '@/backend/components/Plugins/RichTextEditor'
+// import DateTimePicker from '@/backend/components/Plugins/DateTimePicker'
+// import Switch from '@/backend/components/Plugins/Switch'
+// import vSelect from '@/backend/components/Plugins/Select'
 
 /**
  * Vue helper functions.
  */
-import { createRouter } from './router'
-import { createStore } from './store'
-import { createLocales } from '../vue-i18n-config'
+import { createRouter } from '@/backend/router'
+import { createStore } from '@/backend/store'
+import { createLocales } from '@//vue-i18n-config'
 
 /**
  * Main Component
  */
-import App from './App.vue'
+import App from '@/backend/App.vue'
 
-/**
- * Notification Tool
- */
-import Noty from 'noty'
+// /**
+//  * Notification Tool
+//  */
+// import Noty from 'noty'
 
-/**
- * Use Bootstrap Vue
- */
-Vue.use(BootstrapVue)
+// /**
+//  * Use Bootstrap Vue
+//  */
+// Vue.use(BootstrapVue)
 
-/**
- * Register plugins components.
- */
-Vue.component('v-select', vSelect)
-Vue.component('c-switch', Switch)
-Vue.component('p-datetimepicker', DateTimePicker)
-Vue.component('p-richtexteditor', RichTextEditor)
-Vue.component('b-datatable', DataTable)
+// /**
+//  * Register plugins components.
+//  */
+// Vue.component('v-select', vSelect)
+// Vue.component('c-switch', Switch)
+// Vue.component('p-datetimepicker', DateTimePicker)
+// Vue.component('p-richtexteditor', RichTextEditor)
+// Vue.component('b-datatable', DataTable)
 
 /**
  * The create app function will use to render into admin dashboard.
@@ -65,21 +65,21 @@ export function createApp () {
    *
    * Ex. createLocales('en')
    */
-  const i18n = createLocales(window.settings.locale)
+  const i18n = createLocales(windowSettings.locale)
 
   /**
    * The create router will get the admin prefix path that define from config app.
    *
-   * Ex. createRouter('admin', i18n)
+   * Ex. createRouter('admin', 'en')
    */
-  const router = createRouter(window.settings.adminHomePath, i18n)
+  const router = createRouter(windowSettings.adminHomePath, i18n)
 
   /**
    * The create store will get the named routes that provide by @routes()
    *
    * Ex. createStore('admin.posts.draft.counter')
    */
-  const store = createStore(window.route)
+  const store = createStore(windowRoute)
 
   /**
    * Server-side settings
@@ -88,7 +88,7 @@ export function createApp () {
    *
    * Ex. $app.locale, $app.user
    */
-  Vue.prototype.$app = window.settings
+  Vue.prototype.$app = windowSettings
 
   /**
    * Server-side named routes
@@ -97,7 +97,7 @@ export function createApp () {
    *
    * Ex. @routes()
    */
-  Vue.prototype.$app.route = window.route
+  Vue.prototype.$app.route = windowRoute
 
   /**
    * Client-side permissions
@@ -254,13 +254,4 @@ export function createApp () {
   })
 
   return {app, router, store}
-}
-
-/**
- * Check if there is an ID of app that defined in the html.
- * Then mount the vue components.
- */
-if (document.getElementById('app') !== null) {
-  const {app} = createApp()
-  app.$mount('#app')
 }

@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Full Component is matched in the previos snapshots 1`] = `
+<div
+  class="app"
+>
+  <appheader-stub />
+   
+  <div
+    class="app-body"
+  >
+    <sidebar-stub
+      fixed="true"
+    >
+      <div
+        class="sidebar-header"
+      >
+        <i
+          class="fe fe-user"
+        />
+          Jan Daryl Galbo
+      
+      </div>
+       
+      <sidebarnav-stub
+        navitems="[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]"
+      />
+       
+      <sidebarfooter-stub />
+       
+      <sidebarminimizer-stub />
+    </sidebar-stub>
+     
+    <main
+      class="main"
+    >
+      <balert-stub
+        class="alert-top mb-0"
+        dismisslabel="Close"
+        variant="warning"
+      >
+        <span>
+          You are actually logged as 
+          <strong>
+            Jan Daryl Galbo
+          </strong>
+          , you can logout as 
+          <a
+            data-turbolinks="false"
+            href="admin.logout"
+          >
+            superadmin
+          </a>
+          .
+        </span>
+      </balert-stub>
+       
+      <balert-stub
+        class="alert-top mb-0"
+        dismisslabel="Close"
+        show="true"
+        variant="warning"
+      >
+        <span>
+          Your account will be in limited mode as long as your email remains not confirmed. 
+          <a
+            href="user.confirmation.send"
+          >
+            Click here
+          </a>
+           in order to resend mail confirmation.
+        </span>
+      </balert-stub>
+       
+      <breadcrumb-stub
+        list="[object Object],[object Object]"
+      />
+       
+      <div
+        class="container-fluid"
+      >
+        <router-view-stub
+          name="default"
+        />
+      </div>
+    </main>
+     
+    <aside
+      fixed=""
+    />
+  </div>
+   
+  <appfooter-stub
+    editorname="Vue Test"
+    editorsiteurl="https://sciemms.frb.io"
+    name="SCIEMMS"
+  />
+</div>
+`;

@@ -35,8 +35,8 @@ import RedirectionList from '../views/RedirectionList'
 Vue.use(Router)
 
 /**
- * Function that set the base path and localization.
- * It will assign the all routes for your vue.
+ * Function that will set the base path and localization.
+ * Then it will assign to all routes in your vue.
  */
 export function createRouter (base, i18n) {
   return new Router({

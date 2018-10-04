@@ -11,7 +11,8 @@
     "test-watch": "npm run test -- --notify --detectOpenHandles --watch",
     "test-snap": "npm run test -- -u",
     "test-coverage": "npm run test -- --coverage",
-    "test-docs": "npm run test -- --verbose"
+    "test-docs": "npm run test -- --verbose",
+    "test-silent": "npm run test -- --silent"
   },
   "devDependencies": {
     "@coreui/coreui": "^2.0.3",
@@ -84,7 +85,9 @@
       "vue"
     ],
     "moduleNameMapper": {
-      "^@/(.*)$": "<rootDir>/resources/assets/js/$1"
+      "^@/(.*)$": "<rootDir>/resources/assets/js/$1",
+      "^@vendor/(.*)$": "<rootDir>/resources/assets/vendor/coreui/$1",
+      "\\.(css|less|sass|scss)$": "<rootDir>/test/Unit/Backend/Utils/mocks/style.js"
     },
     "transform": {
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
@@ -93,6 +96,9 @@
     "snapshotSerializers": [
       "jest-serializer-vue"
     ],
+    "transformIgnorePatterns": [
+        "node_modules/(?!(bootstrap-vue)/)"
+    ],
     "modulePathIgnorePatterns": [
         "<rootDir>/storage",
         "<rootDir>/node_modules",
@@ -100,7 +106,8 @@
         "<rootDir>/.git",
         "<rootDir>/public",
         "<rootDir>/app"
-    ]
+    ],
+    "coverageDirectory": "<rootDir>/test/Unit/Backend/Coverage"
   },
   "dependencies": {
     "jest-cli": "^23.6.0",
