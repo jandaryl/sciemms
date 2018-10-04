@@ -85,8 +85,10 @@ exports[`Full Component is matched in the previos snapshots 1`] = `
       </div>
     </main>
      
-    <aside
-      fixed=""
+    <aside-stub
+      display=""
+      fixed="true"
+      offcanvas="true"
     />
   </div>
    

@@ -12,7 +12,8 @@
     "test-snap": "npm run test -- -u",
     "test-coverage": "npm run test -- --coverage",
     "test-docs": "npm run test -- --verbose",
-    "test-silent": "npm run test -- --silent"
+    "test-silent": "npm run test -- --silent",
+    "show-coverage": "firefox file:///Sites/thesis/tests/Unit/Backend/Coverage/lcov-report/index.html"
   },
   "devDependencies": {
     "@coreui/coreui": "^2.0.3",
@@ -85,8 +86,9 @@
       "vue"
     ],
     "moduleNameMapper": {
-      "^@/(.*)$": "<rootDir>/resources/assets/js/$1",
       "^@vendor/(.*)$": "<rootDir>/resources/assets/vendor/coreui/$1",
+      "^@backend/(.*)$": "<rootDir>/resources/assets/js/backend/$1",
+      "^@js/(.*)$": "<rootDir>/resources/assets/js/$1",
       "\\.(css|less|sass|scss)$": "<rootDir>/test/Unit/Backend/Utils/mocks/style.js"
     },
     "transform": {

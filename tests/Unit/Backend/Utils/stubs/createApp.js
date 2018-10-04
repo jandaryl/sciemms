@@ -7,7 +7,7 @@ import { windowSettings, windowRoute } from './load-client-scripts'
  * Vue & Axios with config.
  */
 import Vue from 'vue'
-import '@/axios-config'
+import '@js/axios-config'
 
 // /**
 //  * Babel-polyfill & Bootstrap Vue
@@ -28,14 +28,14 @@ import '@/axios-config'
 /**
  * Vue helper functions.
  */
-import { createRouter } from '@/backend/router'
-import { createStore } from '@/backend/store'
-import { createLocales } from '@//vue-i18n-config'
+import { createRouter } from '@backend/router'
+import { createStore } from '@backend/store'
+import { createLocales } from '@js/vue-i18n-config'
 
 /**
  * Main Component
  */
-import App from '@/backend/App.vue'
+import App from '@backend/App.vue'
 
 // /**
 //  * Notification Tool

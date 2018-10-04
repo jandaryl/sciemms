@@ -1,7 +1,7 @@
 import { shallowMount } from '@vue/test-utils'
 import { createApp } from "../Utils/stubs/createApp"
-import { createLocales } from '@/vue-i18n-config'
-import AppHeaderComponent from '@/backend/components/Header.vue'
+import { createLocales } from '@js/vue-i18n-config'
+import AppHeaderComponent from '@backend/components/Header.vue'
 
 
 describe('Header', () => {
