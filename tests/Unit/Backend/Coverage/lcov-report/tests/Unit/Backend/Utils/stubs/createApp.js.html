@@ -1,0 +1,836 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for tests/Unit/Backend/Utils/stubs/createApp.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../../../index.html">All files</a> / <a href="index.html">tests/Unit/Backend/Utils/stubs</a> createApp.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/57</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/30</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/12</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/57</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
+ * Client Window Settings
+ */
+import { windowSettings, windowRoute } from './load-client-scripts'
+&nbsp;
+/**
+ * Vue &amp; Axios with config.
+ */
+import Vue from 'vue'
+import '@/axios-config'
+&nbsp;
+// /**
+//  * Babel-polyfill &amp; Bootstrap Vue
+//  */
+// import 'babel-polyfill'
+// import BootstrapVue from '../../../../node_modules/bootstrap-vue/dist/bootstrap-vue.esm'
+&nbsp;
+// /**
+//  * Vendor plugins components.
+//  */
+// import '../../vendor/coreui/components'
+// import DataTable from '@/backend/components/Plugins/DataTable'
+// import RichTextEditor from '@/backend/components/Plugins/RichTextEditor'
+// import DateTimePicker from '@/backend/components/Plugins/DateTimePicker'
+// import Switch from '@/backend/components/Plugins/Switch'
+// import vSelect from '@/backend/components/Plugins/Select'
+&nbsp;
+/**
+ * Vue helper functions.
+ */
+import { createRouter } from '@/backend/router'
+import { createStore } from '@/backend/store'
+import { createLocales } from '@//vue-i18n-config'
+&nbsp;
+/**
+ * Main Component
+ */
+import App from '@/backend/App.vue'
+&nbsp;
+// /**
+//  * Notification Tool
+//  */
+// import Noty from 'noty'
+&nbsp;
+// /**
+//  * Use Bootstrap Vue
+//  */
+// Vue.use(BootstrapVue)
+&nbsp;
+// /**
+//  * Register plugins components.
+//  */
+// Vue.component('v-select', vSelect)
+// Vue.component('c-switch', Switch)
+// Vue.component('p-datetimepicker', DateTimePicker)
+// Vue.component('p-richtexteditor', RichTextEditor)
+// Vue.component('b-datatable', DataTable)
+&nbsp;
+/**
+ * The create app function will use to render into admin dashboard.
+ */
+export function <span class="fstat-no" title="function not covered" >createApp </span>() {
+  /**
+   * The create locales will get the locale value from windows that define json settings.
+   *
+   * Ex. createLocales('en')
+   */
+  const i18n = <span class="cstat-no" title="statement not covered" >createLocales(windowSettings.locale)</span>
+&nbsp;
+  /**
+   * The create router will get the admin prefix path that define from config app.
+   *
+   * Ex. createRouter('admin', 'en')
+   */
+  const router = <span class="cstat-no" title="statement not covered" >createRouter(windowSettings.adminHomePath, i18n)</span>
+&nbsp;
+  /**
+   * The create store will get the named routes that provide by @routes()
+   *
+   * Ex. createStore('admin.posts.draft.counter')
+   */
+  const store = <span class="cstat-no" title="statement not covered" >createStore(windowRoute)</span>
+&nbsp;
+  /**
+   * Server-side settings
+   *
+   * To access it as global in all the json settings from load-client-scripts.js
+   *
+   * Ex. $app.locale, $app.user
+   */
+<span class="cstat-no" title="statement not covered" >  Vue.prototype.$app = windowSettings</span>
+&nbsp;
+  /**
+   * Server-side named routes
+   *
+   * Get the named routes from the ziggy function.
+   *
+   * Ex. @routes()
+   */
+<span class="cstat-no" title="statement not covered" >  Vue.prototype.$app.route = windowRoute</span>
+&nbsp;
+  /**
+   * Client-side permissions
+   *
+   * 1. Check the user instance if true that came from window settings.
+   * 2. Check the user if the id is equal 1 correspond to super admin.
+   * 3. Return true or the permission if it is includes from window settings.
+   */
+<span class="cstat-no" title="statement not covered" >  if (Vue.prototype.$app.user) {</span>
+<span class="cstat-no" title="statement not covered" >    Vue.prototype.$app.user.can = <span class="fstat-no" title="function not covered" >(p</span>ermission) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      if (Vue.prototype.$app.user.id === 1) {</span>
+<span class="cstat-no" title="statement not covered" >        return true</span>
+      }
+<span class="cstat-no" title="statement not covered" >      return Vue.prototype.$app.permissions.includes(permission)</span>
+    }
+  }
+&nbsp;
+  /**
+   * Form Object to Form Data Object converter
+   *
+   * The idea is the object is came from Form's Vue.
+   * Where it used to act as progressively in vue instance.
+   * Object is specifically in model property of data method of vue.
+   * Where it was stored the form data as object with form properties.
+   *
+   * Tip :
+   *      Form Data Object use to send form data by using ajax request.
+   *
+   * 1. Create an new Form Data Object.
+   * 2. Separate the property from object.
+   * 3. Check if it is a null, append the no value.
+   * 4. Check if it is a boolean, append the 1 or 0 value.
+   * 5. Check if it is a Date append the converted date value.
+   * 6. Check if it is a Object append the property as form key.
+   * 7. Store it in the global variable for send request to the backend.
+   */
+  let objectToFormData = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(o</span>bject, form, namespace) =&gt; {</span>
+    let formData = <span class="cstat-no" title="statement not covered" >form || new FormData()</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    for (let property in object) {</span>
+<span class="cstat-no" title="statement not covered" >      if (!object.hasOwnProperty(property)) {</span>
+<span class="cstat-no" title="statement not covered" >        continue</span>
+      }
+&nbsp;
+      let formKey = <span class="cstat-no" title="statement not covered" >namespace ? `${namespace}[${property}]` : property</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      if (object[property] === null) {</span>
+<span class="cstat-no" title="statement not covered" >        formData.append(formKey, '')</span>
+<span class="cstat-no" title="statement not covered" >        continue</span>
+      }
+<span class="cstat-no" title="statement not covered" >      if (typeof object[property] === 'boolean') {</span>
+<span class="cstat-no" title="statement not covered" >        formData.append(formKey, object[property] ? '1' : '0')</span>
+<span class="cstat-no" title="statement not covered" >        continue</span>
+      }
+<span class="cstat-no" title="statement not covered" >      if (object[property] instanceof Date) {</span>
+<span class="cstat-no" title="statement not covered" >        formData.append(formKey, object[property].toISOString())</span>
+<span class="cstat-no" title="statement not covered" >        continue</span>
+      }
+<span class="cstat-no" title="statement not covered" >      if (typeof object[property] === 'object' &amp;&amp; !(object[property] instanceof File)) {</span>
+<span class="cstat-no" title="statement not covered" >        objectToFormData(object[property], formData, formKey)</span>
+<span class="cstat-no" title="statement not covered" >        continue</span>
+      }
+<span class="cstat-no" title="statement not covered" >      formData.append(formKey, object[property])</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return formData</span>
+  }
+&nbsp;
+  /**
+   * Store the objectToFormData into global variable.
+   * To used in the form mixins for sending form request.
+   */
+<span class="cstat-no" title="statement not covered" >  Vue.prototype.$app.objectToFormData = objectToFormData</span>
+&nbsp;
+  /**
+   * Set the configs and define function for notification in the dashboard.
+   */
+  let noty = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(t</span>ype, text) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    new Noty({</span>
+      layout: 'topRight',
+      theme: 'bootstrap-v4',
+      timeout: 2000,
+      text,
+      type
+    }).show()
+  }
+&nbsp;
+  /**
+   * Get the state from the form mixins to notify the user.
+   * It might be alert, success, error, warning, and info.
+   */
+<span class="cstat-no" title="statement not covered" >  Vue.prototype.$app.noty = {</span>
+    alert: <span class="fstat-no" title="function not covered" >(t</span>ext) =&gt; {
+<span class="cstat-no" title="statement not covered" >      noty('alert', text)</span>
+    },
+    success: <span class="fstat-no" title="function not covered" >(t</span>ext) =&gt; {
+<span class="cstat-no" title="statement not covered" >      noty('success', text)</span>
+    },
+    error: <span class="fstat-no" title="function not covered" >(t</span>ext) =&gt; {
+<span class="cstat-no" title="statement not covered" >      noty('error', text)</span>
+    },
+    warning: <span class="fstat-no" title="function not covered" >(t</span>ext) =&gt; {
+<span class="cstat-no" title="statement not covered" >      noty('warning', text)</span>
+    },
+    info: <span class="fstat-no" title="function not covered" >(t</span>ext) =&gt; {
+<span class="cstat-no" title="statement not covered" >      noty('info', text)</span>
+    }
+  }
+&nbsp;
+  /**
+   * Notify the user if there is an error in the system.
+   * It could be 403, undefined, or general exception.
+   */
+<span class="cstat-no" title="statement not covered" >  Vue.prototype.$app.error = <span class="fstat-no" title="function not covered" >(e</span>rror) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    if (error instanceof String) {</span>
+<span class="cstat-no" title="statement not covered" >      noty('error', error)</span>
+<span class="cstat-no" title="statement not covered" >      return</span>
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    if (error.response) {</span>
+<span class="cstat-no" title="statement not covered" >      if (error.response.status === 403) {</span>
+<span class="cstat-no" title="statement not covered" >        noty('error', i18n.t('exceptions.unauthorized'))</span>
+<span class="cstat-no" title="statement not covered" >        return</span>
+      }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >      if (error.response.data.error !== undefined) {</span>
+<span class="cstat-no" title="statement not covered" >        noty('error', error.response.data.message)</span>
+<span class="cstat-no" title="statement not covered" >        return</span>
+      }
+    }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    noty('error', i18n.t('exceptions.general'))</span>
+  }
+&nbsp;
+  /**
+   * Global router guards use to override the HTML title with meta label or app name.
+   *
+   * Ex. &lt;title&gt;Hello World!&lt;/title&gt;
+   */
+<span class="cstat-no" title="statement not covered" >  router.beforeEach(<span class="fstat-no" title="function not covered" >(t</span>o, from, next) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    document.title = `${to.meta.label} | ${window.settings.appName}`</span>
+<span class="cstat-no" title="statement not covered" >    next()</span>
+  })
+&nbsp;
+  /**
+   * Make new vue instance with router, store, i18n.
+   * Then render it into App component.
+   */
+  const app = <span class="cstat-no" title="statement not covered" >new Vue({</span>
+    router,
+    store,
+    i18n,
+    render: <span class="fstat-no" title="function not covered" >(h</span>) =&gt; <span class="cstat-no" title="statement not covered" >h(App)</span>
+  })
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  return {app, router, store}</span>
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Oct 04 2018 01:00:08 GMT-0400 (Eastern Daylight Time)
+</div>
+</div>
+<script src="../../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../../sorter.js"></script>
+</body>
+</html>

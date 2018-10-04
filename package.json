@@ -107,7 +107,7 @@
         "<rootDir>/public",
         "<rootDir>/app"
     ],
-    "coverageDirectory": "<rootDir>/test/Unit/Backend/Coverage"
+    "coverageDirectory": "<rootDir>/tests/Unit/Backend/Coverage"
   },
   "dependencies": {
     "jest-cli": "^23.6.0",

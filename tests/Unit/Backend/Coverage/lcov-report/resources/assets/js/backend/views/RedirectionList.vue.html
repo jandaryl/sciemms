@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for resources/assets/js/backend/views/RedirectionList.vue</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../../../prettify.css" />
+    <link rel="stylesheet" href="../../../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../../../index.html">All files</a> / <a href="index.html">resources/assets/js/backend/views</a> RedirectionList.vue
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">5.88% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>1/17</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/5</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/9</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">5.88% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>1/17</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
+  &lt;div&gt;
+    &lt;b-row&gt;
+      &lt;b-col xl="6"&gt;
+        &lt;b-card&gt;
+          &lt;h3 class="card-title" slot="header"&gt;{{ $t('labels.backend.redirections.import.title') }}&lt;/h3&gt;
+          &lt;form @submit.prevent="onFileImport"&gt;
+            &lt;b-form-file required :placeholder="$t('labels.no_file_chosen')"
+                         v-model="importFile"&gt;&lt;/b-form-file&gt;
+            &lt;b-button type="submit" variant="warning" class="mt-3"&gt;
+              {{ $t('buttons.redirections.import') }}
+            &lt;/b-button&gt;
+          &lt;/form&gt;
+        &lt;/b-card&gt;
+      &lt;/b-col&gt;
+    &lt;/b-row&gt;
+&nbsp;
+    &lt;b-card&gt;
+      &lt;template slot="header"&gt;
+        &lt;h3 class="card-title"&gt;{{ $t('labels.backend.redirections.titles.index') }}&lt;/h3&gt;
+        &lt;div class="card-options" v-if="this.$app.user.can('create redirections')"&gt;
+          &lt;b-button to="/redirections/create" variant="success" size="sm"&gt;
+            &lt;i class="fe fe-plus-circle"&gt;&lt;/i&gt; {{ $t('buttons.redirections.create') }}
+          &lt;/b-button&gt;
+        &lt;/div&gt;
+      &lt;/template&gt;
+      &lt;b-datatable ref="datasource"
+                   @context-changed="onContextChanged"
+                   search-route="admin.redirections.search"
+                   delete-route="admin.redirections.destroy"
+                   action-route="admin.redirections.batch_action" :actions="actions"
+                   @bulk-action-success="onBulkActionSuccess"&gt;
+        &lt;b-table ref="datatable"
+                 striped
+                 bordered
+                 show-empty
+                 stacked="md"
+                 no-local-sorting
+                 :empty-text="$t('labels.datatables.no_results')"
+                 :empty-filtered-text="$t('labels.datatables.no_matched_results')"
+                 :fields="fields"
+                 :items="dataLoadProvider"
+                 sort-by="created_at"
+                 :sort-desc="true"
+                 :busy.sync="isBusy"
+        &gt;
+          &lt;template slot="HEAD_checkbox" slot-scope="data"&gt;&lt;/template&gt;
+          &lt;template slot="checkbox" slot-scope="row"&gt;
+            &lt;b-form-checkbox :value="row.item.id" v-model="selected"&gt;&lt;/b-form-checkbox&gt;
+          &lt;/template&gt;
+          &lt;template slot="active" slot-scope="row"&gt;
+            &lt;c-switch v-if="row.item.can_edit" :checked="row.value" @change="onActiveToggle(row.item.id)"&gt;&lt;/c-switch&gt;
+          &lt;/template&gt;
+          &lt;template slot="actions" slot-scope="row"&gt;
+            &lt;b-button v-if="row.item.can_edit" size="sm" variant="primary" :to="`/redirections/${row.item.id}/edit`" v-b-tooltip.hover :title="$t('buttons.edit')" class="mr-1"&gt;
+              &lt;i class="fe fe-edit"&gt;&lt;/i&gt;
+            &lt;/b-button&gt;
+            &lt;b-button v-if="row.item.can_delete" size="sm" variant="danger" v-b-tooltip.hover :title="$t('buttons.delete')" @click.stop="onDelete(row.item.id)"&gt;
+              &lt;i class="fe fe-trash"&gt;&lt;/i&gt;
+            &lt;/b-button&gt;
+          &lt;/template&gt;
+        &lt;/b-table&gt;
+      &lt;/b-datatable&gt;
+    &lt;/b-card&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&nbsp;
+&lt;script&gt;
+import axios from 'axios'
+&nbsp;
+export default {
+  name: 'RedirectionList',
+<span class="fstat-no" title="function not covered" >  data () {</span>
+<span class="cstat-no" title="statement not covered" >    return {</span>
+      isBusy: false,
+      selected: [],
+      fields: [
+        { key: 'checkbox' },
+        { key: 'source', label: this.$t('validation.attributes.source_path'), sortable: true },
+        { key: 'active', label: this.$t('validation.attributes.active'), 'class': 'text-center' },
+        { key: 'target', label: this.$t('validation.attributes.target_path'), sortable: true },
+        { key: 'type', label: this.$t('validation.attributes.redirect_type'), 'class': 'text-center' },
+        { key: 'created_at', label: this.$t('labels.created_at'), 'class': 'text-center', sortable: true },
+        { key: 'updated_at', label: this.$t('labels.updated_at'), 'class': 'text-center', sortable: true },
+        { key: 'actions', label: this.$t('labels.actions'), 'class': 'nowrap' }
+      ],
+      actions: {
+        destroy: this.$t('labels.backend.redirections.actions.destroy'),
+        enable: this.$t('labels.backend.redirections.actions.enable'),
+        disable: this.$t('labels.backend.redirections.actions.disable')
+      },
+      importFile: null
+    }
+  },
+  watch: {
+<span class="fstat-no" title="function not covered" >    selected (value) {</span>
+<span class="cstat-no" title="statement not covered" >      this.$refs.datasource.selected = value</span>
+    }
+  },
+  methods: {
+<span class="fstat-no" title="function not covered" >    dataLoadProvider (ctx) {</span>
+<span class="cstat-no" title="statement not covered" >      return this.$refs.datasource.loadData(ctx.sortBy, ctx.sortDesc)</span>
+    },
+<span class="fstat-no" title="function not covered" >    onContextChanged () {</span>
+<span class="cstat-no" title="statement not covered" >      return this.$refs.datatable.refresh()</span>
+    },
+<span class="fstat-no" title="function not covered" >    onDelete (id) {</span>
+<span class="cstat-no" title="statement not covered" >      this.$refs.datasource.deleteRow({ redirection: id })</span>
+    },
+<span class="fstat-no" title="function not covered" >    onBulkActionSuccess () {</span>
+<span class="cstat-no" title="statement not covered" >      this.selected = []</span>
+    },
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    onActiveToggle (id) {</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >      axios.post(this.$app.route('admin.redirections.active', {redirection: id}))</span></span>
+        .catch((error) =&gt; {
+<span class="cstat-no" title="statement not covered" >          this.$app.error(error)</span>
+        })
+    },
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    async onFileImport () {</span></span>
+<span class="cstat-no" title="statement not covered" >      let formData = new FormData()</span>
+<span class="cstat-no" title="statement not covered" >      formData.append('import', this.importFile)</span>
+&nbsp;
+      try {
+<span class="cstat-no" title="statement not covered" >        let {data} = await axios.post(this.$app.route('admin.redirections.import'), formData)</span>
+<span class="cstat-no" title="statement not covered" >        this.$refs.datatable.refresh()</span>
+<span class="cstat-no" title="statement not covered" >        this.$app.noty[data.status](data.message)</span>
+      } catch (e) {
+<span class="cstat-no" title="statement not covered" >        this.$app.error(e)</span>
+      }
+    }
+  }
+}
+&lt;/script&gt;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Oct 04 2018 01:00:08 GMT-0400 (Eastern Daylight Time)
+</div>
+</div>
+<script src="../../../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../../../sorter.js"></script>
+</body>
+</html>
