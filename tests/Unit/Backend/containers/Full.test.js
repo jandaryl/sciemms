@@ -33,6 +33,7 @@ let appName  = 'SCIEMMS'
 let editorName = 'Vue Test'
 let editorSiteUrl = 'https://sciemms.frb.io'
 let testLocale = 'Test Locale'
+let initNavStub = { initNav: jest.fn() }
 let dummyData = { sync: false,
       i18n,
       router,
@@ -59,6 +60,17 @@ let dummyData = { sync: false,
                 formSubmissionsCount: 0
               }
           }
+        },
+        data () {
+          return {
+            nav: []
+          }
+        },
+        created () {
+          this.initNav()
+        },
+        methods : {
+          initNav() { this.nav = jest.fn() }
         }
       }}
 let App = (values = {}) => { return shallowMount(Full, values) }
@@ -80,10 +92,10 @@ describe("Full Component", () => {
   })
 
   it("is the method initNav() was called", () => {
-    // let initNavStub = jest.fn()
+    // let initNavStub = { initNav: jest.fn() }
     // wrapper = mount(Full, dummyData)
-    // wrapper.setMethods(initNav: initNavStub)
-    // assertCalled(wrapper.vm.initNav())
+    // wrapper.setMethods({ methods: {initNavStub})
+    // assertCalled(wrapper.methods.initNav())
     assertTrue(true)
   })
 
