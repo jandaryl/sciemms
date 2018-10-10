@@ -13,7 +13,7 @@
     "test-coverage": "npm run test -- --coverage",
     "test-docs": "npm run test -- --verbose",
     "test-silent": "npm run test -- --silent",
-    "show-coverage": "firefox file:///Sites/thesis/tests/Unit/Backend/Coverage/lcov-report/index.html"
+    "show-coverage": "firefox file:///Sites/thesis/tests/Unit/Frontend/Coverage/lcov-report/index.html"
   },
   "devDependencies": {
     "@coreui/coreui": "^2.0.3",
@@ -89,7 +89,7 @@
       "^@vendor/(.*)$": "<rootDir>/resources/assets/vendor/coreui/$1",
       "^@backend/(.*)$": "<rootDir>/resources/assets/js/backend/$1",
       "^@js/(.*)$": "<rootDir>/resources/assets/js/$1",
-      "\\.(css|less|sass|scss)$": "<rootDir>/test/Unit/Backend/Utils/mocks/style.js"
+      "\\.(css|less|sass|scss)$": "<rootDir>/test/Unit/Frontend/Utils/mocks/style.js"
     },
     "transform": {
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
@@ -109,7 +109,7 @@
         "<rootDir>/public",
         "<rootDir>/app"
     ],
-    "coverageDirectory": "<rootDir>/tests/Unit/Backend/Coverage"
+    "coverageDirectory": "<rootDir>/tests/Unit/Frontend/Coverage"
   },
   "dependencies": {
     "jest-cli": "^23.6.0",

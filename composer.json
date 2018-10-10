@@ -59,7 +59,8 @@
             "App\\": "app/"
         },
         "files": [
-            "app/helpers.php"
+            "app/helpers.php",
+            "tests/Backend/Utils/functions.php"
         ]
     },
     "autoload-dev": {
