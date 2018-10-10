@@ -60,7 +60,7 @@
         },
         "files": [
             "app/helpers.php",
-            "tests/Backend/Utils/functions.php"
+            "tests/Unit/Backend/utilities/functions.php"
         ]
     },
     "autoload-dev": {
