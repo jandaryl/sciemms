@@ -3,121 +3,120 @@
 namespace Tests\Unit;
 
 use Tests\TestCase;
+use App\Models\Post;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Permission;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class UserTest extends TestCase
 {
-    use DatabaseMigrations;
+    use RefreshDatabase;
+
+    // /** @test */
+    // public function it_stub()
+    // {
+    //     $this->signInAdmin();
+
+    // }
+    public function setup()
+    {
+        parent::setup();
+
+        $this->user = create(User::class, ['name' => 'jandaryl', 'active' => true]);
+    }
 
     /** @test */
     public function it_can_be_instantiated()
     {
-        $user = create(User::class);
-
-        $this->assertInstanceOf(User::class, $user);
+        $this->assertInstanceOf(User::class, $this->user);
     }
 
     /** @test */
     public function it_can_get_the_slug_attributes()
     {
-        $user = create(User::class, ['name' => 'jandaryl']);
-
-        $this->assertEquals($user->slug, 'jandaryl');
+        $this->assertEquals($this->user->slug, 'jandaryl');
     }
 
     /** @test */
     public function it_can_get_the_can_edit_attribute()
     {
-        $user = create(User::class);
-
-        $this->assertFalse($user->can_edit);
+        $this->assertFalse($this->user->can_edit);
     }
 
     /** @test */
     public function it_can_get_the_can_delete_attribute()
     {
-        $user = create(User::class);
-
-        $this->assertFalse($user->can_delete);
+        $this->assertFalse($this->user->can_delete);
     }
 
     /** @test */
     public function it_can_get_the_can_impersonate_attribute()
     {
-        $user = create(User::class);
-
-        $this->assertFalse($user->can_impersonate);
+        $this->assertFalse($this->user->can_impersonate);
     }
 
     /** @test */
     public function it_can_scope_by_active_users()
     {
-        $user = create(User::class, ['active' => true], 2);
-        $user = create(User::class, ['active' => false]);
-
-        $this->assertEquals($user->actives()->count(), 2);
+        $this->assertEquals($this->user->actives()->count(), 1);
     }
 
     /** @test */
     public function it_can_get_the_is_super_admin_attribute()
     {
-        $user = create(User::class, ['id' => 1]);
+        $superAdmin = $this->user;
+        $otherUser = create(User::class, ['id' => 2]);
 
-        $this->assertTrue($user->is_super_admin);
-
-        $user = create(User::class, ['id' => 2]);
-
-        $this->assertFalse($user->is_super_admin);
+        $this->assertTrue($superAdmin->is_super_admin);
+        $this->assertFalse($otherUser->is_super_admin);
     }
 
     /** @test */
     public function it_is_belongs_to_many_roles()
     {
-        $this->markTestIncomplete();
+        $roles = create(Role::class, [], 2);
+
+        $rolesCount = $this->user->roles()->saveMany($roles)->count();
+
+        $this->assertEquals($rolesCount, 2);
+        $this->assertInstanceOf(Collection::class, $this->user->roles);
     }
 
     /** @test */
     public function it_can_get_the_formatted_roles_attribute()
     {
-        $user = create(User::class);
-
-        $this->assertEquals($user->formatted_roles, 'Super Administrator');
-
         $role = create(Role::class, ['display_name' => 'Administrator']);
 
-        $formatted_role = $user->roles()->save($role)->display_name;
+        $formatted_role = $this->user->roles()->save($role)->display_name;
 
+        $this->assertEquals($this->user->formatted_roles, 'Super Administrator');
         $this->assertEquals($formatted_role, 'Administrator');
     }
 
     /** @test */
     public function it_has_a_role_name()
     {
-        $user = create(User::class);
         $role = create(Role::class, ['name' => 'Admin']);
-        $role_name = $user->roles()->save($role)->name;
 
-        $this->assertEquals($role_name, 'Admin');
+        $roleName = $this->user->roles()->save($role)->name;
+
+        $this->assertEquals($roleName, 'Admin');
     }
 
     /** @test */
     public function it_can_get_permissions_from_the_role()
     {
-        $user = create(User::class);
-        $role = create(User::class, ['name' => 'admin']);
+        $role = create(Role::class, ['name' => 'admin']);
         $permissions = create(Permission::class, [
             'role_id' => $role->id,
-            'name' => 'access backend'
+            'name'    => 'access backend'
         ]);
 
-        $role_id = $user->roles()->save($role)->id;
-        /**
-         * This test is not accurate to the main idea.
-         */
-        $this->assertEquals($permissions->role_id, $role_id);
+        $roleId = $this->user->roles()->save($role)->id;
+
+        $this->assertEquals($permissions->role_id, $roleId);
         $this->assertEquals($permissions->name, 'access backend');
     }
 
@@ -145,9 +144,18 @@ class UserTest extends TestCase
         $this->markTestIncomplete();
     }
 
-    /** @test */
-    public function it_has_many_posts()
-    {
-        $this->markTestIncomplete();
-    }
+    // /** @test */
+    // public function it_has_many_posts()
+    // {
+    //     $user = $this->user;
+    //     $posts = create(Post::class, [], 2);
+
+    //     $postsCount = $user->posts()->saveMany($posts)->count();
+
+    //     $this->assertEquals($postsCount, 2);
+    //     $this->assertInstanceOf(Collection::class, $user->posts);
+    //     $posts->each(function (Post $posts) use ($user) {
+    //         $this->assertEquals($posts->user_id, $user->id);
+    //     });
+    // }
 }

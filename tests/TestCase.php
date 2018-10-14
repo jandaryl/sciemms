@@ -4,22 +4,23 @@ namespace Tests;
 
 use App\Models\Role;
 use App\Models\User;
+use App\Models\Permission;
+use App\Exceptions\Handler;
+use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication;
 
-    // protected $user;
-    // protected $role;
+    protected function setup()
+    {
+        parent::setup();
 
-    // public function __construct()
-    // {
-    //     $this->user = new User;
-    //     $this->role = new Role;
-    // }
+        $this->disableExceptionHandling();
+    }
 
-    public function signIn($user = null)
+    protected function signIn($user = null)
     {
         $this->avoidBeingSuperAdmin();
 
@@ -30,24 +31,21 @@ abstract class TestCase extends BaseTestCase
         return $this;
     }
 
-    // public function signInAdmin($user = null, $role = null)
+    // protected function signInAdmin($user = null)
     // {
-    //     $user = $this->user->create($user) ?: create(User::class);
+    //     $user = $user ?: create(User::class);
+    //     $role = create(Role::class, ['name' => 'Admin']);
+    //     $permissions = create(Permission::class);
+    //     // dd($role);
+    //     $adminRole = $role->permissions()->save($permissions);
+    //     $adminUser = $user->roles()->permissions()->save($permissions);
 
-    //     $role = $this->role->create($role) ?: create(Role::class);
-
-    //     foreach ($this->permissions as $name) {
-    //         $role->permissions()->create(['name' => $name]);
-    //     }
-
-    //     $admin = $user->roles()->save($role);
-
-    //     $this->actingAs($admin);
+    //     $this->actingAs($adminUser);
 
     //     return $this;
     // }
 
-    public function signInSuperAdmin($user = null)
+    protected function signInSuperAdmin($user = null)
     {
         $superAdmin = $user ?: create(User::class);
 
@@ -56,26 +54,37 @@ abstract class TestCase extends BaseTestCase
         return $this;
     }
 
-    public function avoidBeingSuperAdmin()
+    protected function avoidBeingSuperAdmin()
     {
+        /**
+         * The first user that will be created will become super admin.
+         */
         return create(User::class);
     }
 
-    // public function permissions()
-    // {
-    //     return [
-    //         'access backend',
-    //         'view posts',
-    //         'create posts',
-    //         'edit posts',
-    //         'delete posts',
-    //         'publish posts',
-    //         'view form_submissions',
-    //         'delete form_submissions',
-    //         'view users',
-    //         'create users',
-    //         'edit users',
-    //         'delete users',
-    //     ];
-    // }
+    protected function disableExceptionHandling()
+    {
+        $this->oldExceptionHandler = $this->app->make(ExceptionHandler::class);
+        $this->app->instance(ExceptionHandler::class, new class() extends Handler {
+            public function __construct()
+            {
+            }
+
+            public function report(\Exception $e)
+            {
+            }
+
+            public function render($request, \Exception $e)
+            {
+                throw $e;
+            }
+        });
+    }
+
+    protected function withExceptionHandling()
+    {
+        $this->app->instance(ExceptionHandler::class, $this->oldExceptionHandler);
+
+        return $this;
+    }
 }
