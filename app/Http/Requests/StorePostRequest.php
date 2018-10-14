@@ -20,7 +20,6 @@ class StorePostRequest extends FormRequest
         $this->posts = $posts;
     }
 
-
     /**
      * Determine if the meta is authorized to make this request.
      *
@@ -40,6 +39,8 @@ class StorePostRequest extends FormRequest
     {
         return [
             'title'          => 'required',
+            'summary'        => 'required',
+            'body'           => 'required',
             'featured_image' => 'nullable|mimes:jpeg,jpg,png,gif',
             'status'         => 'in:publish,draft',
             'published_at'   => 'nullable|date',

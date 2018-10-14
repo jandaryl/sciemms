@@ -158,7 +158,7 @@ class PostController extends BackendController
     {
         $this->canEditPosts();
 
-        $post->update(['pinned' => ! $post->pinned]);
+        $post->update(['pinned' => !$post->pinned]);
     }
 
     /**
@@ -171,9 +171,8 @@ class PostController extends BackendController
     {
         $this->canEditPosts();
 
-        $post->update(['promoted' => ! $post->promoted]);
+        $post->update(['promoted' => !$post->promoted]);
     }
-
 
     /**
      * Check if user can't view the posts.
@@ -182,7 +181,7 @@ class PostController extends BackendController
      */
     public function cannotViewPosts(): bool
     {
-        return ! Gate::check('view posts');
+        return !Gate::check('view posts');
     }
 
     /**
@@ -351,14 +350,15 @@ class PostController extends BackendController
         ]);
 
         if ($request->get('exportData')) {
-            return $requestSearchQuery->export([
-                'title',
-                'status',
-                'pinned',
-                'promoted',
-                'posts.created_at',
-                'posts.updated_at',
-            ],
+            return $requestSearchQuery->export(
+                [
+                    'title',
+                    'status',
+                    'pinned',
+                    'promoted',
+                    'posts.created_at',
+                    'posts.updated_at',
+                ],
                 [
                     __('validation.attributes.title'),
                     __('validation.attributes.status'),
@@ -367,7 +367,8 @@ class PostController extends BackendController
                     __('labels.created_at'),
                     __('labels.updated_at'),
                 ],
-                'posts');
+                'posts'
+            );
         }
 
         return $requestSearchQuery->result([
@@ -401,7 +402,7 @@ class PostController extends BackendController
 
     /**
      * Build the posts query.
-     * 
+     *
      * @return Builder
      */
     public function postQuery(): Builder

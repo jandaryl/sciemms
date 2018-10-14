@@ -5,7 +5,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 /**
- * Use the actions and mutations functions.
+ * Call the actions and mutations functions.
  */
 import { createActions } from './actions'
 import mutations from './mutations'
@@ -17,13 +17,13 @@ Vue.use(Vuex)
 
 /**
  * Function that connect the whole logic of Vuex.
- * It will use actions and mutations JS files.
+ * It will use actions and mutations functions.
  * Set the state and wait for AJAX data.
  * Update the counters properties.
  */
 export function createStore (route) {
   /**
-   * Call the createActions function.
+   * Call the action function.
    */
   const actions = createActions(route)
 

@@ -1,5 +1,5 @@
 /**
- * Backend Client Window Settings
+ * Client Window Settings
  */
 import './load-client-scripts'
 
@@ -48,7 +48,7 @@ import Noty from 'noty'
 Vue.use(BootstrapVue)
 
 /**
- * Use custom components.
+ * Register plugins components.
  */
 Vue.component('v-select', vSelect)
 Vue.component('c-switch', Switch)
@@ -70,7 +70,7 @@ export function createApp () {
   /**
    * The create router will get the admin prefix path that define from config app.
    *
-   * Ex. createRouter('admin', 'en')
+   * Ex. createRouter('admin', i18n)
    */
   const router = createRouter(window.settings.adminHomePath, i18n)
 
