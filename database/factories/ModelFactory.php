@@ -23,6 +23,24 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Models\Role::class, function (Faker\Generator $faker) {
+    return [
+        'name'         => $faker->name,
+        'display_name' => ['en' => $faker->name],
+        'description'  => ['en' => $faker->sentence],
+        'order'        => mt_rand(1, 4)
+    ];
+});
+
+$factory->define(App\Models\Permission::class, function (Faker\Generator $faker) {
+    return [
+        'name'    => 'access backend',
+        'role_id' => function () {
+            return create(App\Models\Role::class)->id;
+        }
+    ];
+});
+
 $factory->define(App\Models\Meta::class, function (Faker\Generator $faker) {
     return [
         'title' => [

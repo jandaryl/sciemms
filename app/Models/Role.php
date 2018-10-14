@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use App\Models\Traits\TranslatableJson;
-use GeneaLabs\LaravelModelCaching\Traits\Cachable;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Gate;
+use App\Models\Traits\TranslatableJson;
+use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
+use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 
 class Role extends Model
 {

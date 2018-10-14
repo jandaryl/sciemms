@@ -15,7 +15,6 @@ class AccountTest extends BrowserKitTestCase
     {
         $user = $this->user();
 
-
         $this->actingAs($user)
              ->visit('/user/account')
              ->see('My Account')
@@ -23,7 +22,6 @@ class AccountTest extends BrowserKitTestCase
              ->see('Edit my profile')
              ->see('Change my password')
              ->see('Delete my account');
-
     }
 
     /** @test */
@@ -75,7 +73,6 @@ class AccountTest extends BrowserKitTestCase
              ->see('Profile successfully updated.');
     }
 
-
     /**
      * Todo :
      *
@@ -110,5 +107,4 @@ class AccountTest extends BrowserKitTestCase
     //          ->see('Account successfully deleted');
     // }
     // Error : #105 /home/jandaryl/Sites/thesis/vendor/phpunit/phpunit/phpunit(53): PHPUnit\TextUI\Command::main()
-
 }

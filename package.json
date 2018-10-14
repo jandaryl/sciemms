@@ -10,7 +10,10 @@
     "test": "jest",
     "test-watch": "npm run test -- --notify --detectOpenHandles --watch",
     "test-snap": "npm run test -- -u",
-    "test-coverage": "npm run test -- --coverage"
+    "test-coverage": "npm run test -- --coverage",
+    "testdox": "npm run test -- --verbose",
+    "test-silent": "npm run test -- --silent",
+    "show-coverage": "firefox file:///Sites/thesis/tests/Unit/Frontend/Coverage/lcov-report/index.html"
   },
   "devDependencies": {
     "@coreui/coreui": "^2.0.3",
@@ -83,7 +86,10 @@
       "vue"
     ],
     "moduleNameMapper": {
-      "^@/(.*)$": "<rootDir>/resources/assets/js/components/$1"
+      "^@vendor/(.*)$": "<rootDir>/resources/assets/vendor/coreui/$1",
+      "^@backend/(.*)$": "<rootDir>/resources/assets/js/backend/$1",
+      "^@js/(.*)$": "<rootDir>/resources/assets/js/$1",
+      "\\.(css|less|sass|scss)$": "<rootDir>/test/Unit/Frontend/Utils/mocks/style.js"
     },
     "transform": {
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
@@ -92,15 +98,18 @@
     "snapshotSerializers": [
       "jest-serializer-vue"
     ],
+    "transformIgnorePatterns": [
+        "node_modules/(?!(bootstrap-vue)/)"
+    ],
     "modulePathIgnorePatterns": [
         "<rootDir>/storage",
         "<rootDir>/node_modules",
         "<rootDir>/vendor",
         "<rootDir>/.git",
         "<rootDir>/public",
-        "<rootDir>/resources",
         "<rootDir>/app"
-    ]
+    ],
+    "coverageDirectory": "<rootDir>/tests/Unit/Frontend/Coverage"
   },
   "dependencies": {
     "jest-cli": "^23.6.0",

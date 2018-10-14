@@ -71,7 +71,7 @@ class EloquentAccountRepository extends EloquentBaseRepository implements Accoun
         /* @var User $user */
         $user->last_access_at = Carbon::now();
 
-        if (! $user->save()) {
+        if (!$user->save()) {
             throw new GeneralException(__('exceptions.backend.users.update'));
         }
 
@@ -97,9 +97,9 @@ class EloquentAccountRepository extends EloquentBaseRepository implements Accoun
         /** @var User $user */
         $user = $this->users->query()->whereEmail($user_email)->first();
 
-        if (! $user) {
+        if (!$user) {
             // Registration is not enabled
-            if (! config('account.can_register')) {
+            if (!config('account.can_register')) {
                 throw new GeneralException(__('exceptions.frontend.auth.registration_disabled'));
             }
 
@@ -111,7 +111,7 @@ class EloquentAccountRepository extends EloquentBaseRepository implements Accoun
         }
 
         // Save new provider if needed
-        if (! $user->getProvider($provider)) {
+        if (!$user->getProvider($provider)) {
             $user->providers()->save(new SocialLogin([
                 'provider'    => $provider,
                 'provider_id' => $data->getId(),
@@ -137,7 +137,8 @@ class EloquentAccountRepository extends EloquentBaseRepository implements Accoun
 
         /** @var \Illuminate\Support\Collection $permissions */
         $permissions = session()->get('permissions');
-
+        // $permissions = ['create post'];
+        // dd($permissions);
         if ($permissions->isEmpty()) {
             return false;
         }
@@ -155,7 +156,7 @@ class EloquentAccountRepository extends EloquentBaseRepository implements Accoun
      */
     public function update(array $input)
     {
-        if (! config('account.updating_enabled')) {
+        if (!config('account.updating_enabled')) {
             throw new GeneralException(__('exceptions.frontend.user.updating_disabled'));
         }
 
@@ -182,7 +183,7 @@ class EloquentAccountRepository extends EloquentBaseRepository implements Accoun
      */
     public function changePassword($oldPassword, $newPassword)
     {
-        if (! config('account.updating_enabled')) {
+        if (!config('account.updating_enabled')) {
             throw new GeneralException(__('exceptions.frontend.user.updating_disabled'));
         }
 
@@ -252,7 +253,7 @@ class EloquentAccountRepository extends EloquentBaseRepository implements Accoun
             throw new GeneralException(__('exceptions.backend.users.first_user_cannot_be_destroyed'));
         }
 
-        if (! $user->delete()) {
+        if (!$user->delete()) {
             throw new GeneralException(__('exceptions.frontend.user.delete_account'));
         }
 
