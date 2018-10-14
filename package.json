@@ -11,7 +11,7 @@
     "test-watch": "npm run test -- --notify --detectOpenHandles --watch",
     "test-snap": "npm run test -- -u",
     "test-coverage": "npm run test -- --coverage",
-    "test-docs": "npm run test -- --verbose",
+    "testdox": "npm run test -- --verbose",
     "test-silent": "npm run test -- --silent",
     "show-coverage": "firefox file:///Sites/thesis/tests/Unit/Frontend/Coverage/lcov-report/index.html"
   },
