@@ -13,7 +13,7 @@ use App\Repositories\Contracts\RoleRepository;
 class EloquentRoleRepository extends EloquentBaseRepository implements RoleRepository
 {
     /**
-     * EloquentRoleRepository constructor.
+     * Contruct the Role instance.
      *
      * @param Role $role
      */
@@ -23,6 +23,8 @@ class EloquentRoleRepository extends EloquentBaseRepository implements RoleRepos
     }
 
     /**
+     * Store the role data in the database.
+     *
      * @param array $input
      *
      * @throws \Exception|\Throwable
@@ -34,7 +36,7 @@ class EloquentRoleRepository extends EloquentBaseRepository implements RoleRepos
         /** @var Role $role */
         $role = $this->make($input);
 
-        if (! $this->save($role, $input)) {
+        if (!$this->save($role, $input)) {
             throw new GeneralException(__('exceptions.backend.roles.create'));
         }
 
@@ -42,6 +44,8 @@ class EloquentRoleRepository extends EloquentBaseRepository implements RoleRepos
     }
 
     /**
+     * Update the role data in the database.
+     *
      * @param Role  $role
      * @param array $input
      *
@@ -54,7 +58,7 @@ class EloquentRoleRepository extends EloquentBaseRepository implements RoleRepos
     {
         $role->fill($input);
 
-        if (! $this->save($role, $input)) {
+        if (!$this->save($role, $input)) {
             throw new GeneralException(__('exceptions.backend.roles.update'));
         }
 
@@ -62,6 +66,8 @@ class EloquentRoleRepository extends EloquentBaseRepository implements RoleRepos
     }
 
     /**
+     * Save the role with its permissions.
+     *
      * @param \App\Models\Role $role
      * @param array            $input
      *
@@ -71,7 +77,7 @@ class EloquentRoleRepository extends EloquentBaseRepository implements RoleRepos
      */
     private function save(Role $role, array $input)
     {
-        if (! $role->save($input)) {
+        if (!$role->save($input)) {
             return false;
         }
 
@@ -87,6 +93,8 @@ class EloquentRoleRepository extends EloquentBaseRepository implements RoleRepos
     }
 
     /**
+     * Delete the Role.
+     *
      * @param Role $role
      *
      * @throws \Exception|\Throwable
@@ -95,7 +103,7 @@ class EloquentRoleRepository extends EloquentBaseRepository implements RoleRepos
      */
     public function destroy(Role $role)
     {
-        if (! $role->delete()) {
+        if (!$role->delete()) {
             throw new GeneralException(__('exceptions.backend.roles.delete'));
         }
 
@@ -109,10 +117,11 @@ class EloquentRoleRepository extends EloquentBaseRepository implements RoleRepos
     {
         $authenticatedUser = auth()->user();
 
-        if (! $authenticatedUser) {
+        if (!$authenticatedUser) {
             return [];
         }
 
+        // Get the roles with permissions from database.
         $roles = $this->query()->with('permissions')->orderBy('order')->get();
 
         if ($authenticatedUser->is_super_admin) {
@@ -122,6 +131,9 @@ class EloquentRoleRepository extends EloquentBaseRepository implements RoleRepos
         /** @var \Illuminate\Support\Collection $permissions */
         $permissions = $authenticatedUser->getPermissions();
 
+        // Filter the roles from the database
+        // Then check it by the permissions from auth user.
+        // And return the roles based on the filtered permissions.
         $roles = $roles->filter(function (Role $role) use ($permissions) {
             foreach ($role->permissions as $permission) {
                 if (false === $permissions->search($permission, true)) {

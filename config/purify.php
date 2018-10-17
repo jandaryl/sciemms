@@ -64,9 +64,7 @@ return [
         | http://htmlpurifier.org/live/configdoc/plain.html#HTML.Allowed
         |
         */
-
-        // 'HTML.Allowed' => 'h1,h2,h3,h4,h5,h6,figure[class],figcaption,b,strong,i,em,a[href|title],ul,ol,li,p,br,span,img[width|height|alt|src]',
-        'HTML.Allowed' => '',
+        'HTML.Allowed' => env('HTML_PURIFY', 'h1,h2,h3,h4,h5,h6,figure[class],figcaption,b,strong,i,em,a[href|title],ul,ol,li,p,br,span,img[width|height|alt|src]'),
 
         /*
         |--------------------------------------------------------------------------

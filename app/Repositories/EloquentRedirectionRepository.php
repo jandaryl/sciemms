@@ -14,7 +14,7 @@ use App\Repositories\Contracts\RedirectionRepository;
 class EloquentRedirectionRepository extends EloquentBaseRepository implements RedirectionRepository
 {
     /**
-     * EloquentRedirectionRepository constructor.
+     * Construct the Redirection instance.
      *
      * @param Redirection $redirection
      */
@@ -24,6 +24,8 @@ class EloquentRedirectionRepository extends EloquentBaseRepository implements Re
     }
 
     /**
+     * Find the redirection by source.
+     *
      * @param $source
      *
      * @return Redirection
@@ -34,6 +36,8 @@ class EloquentRedirectionRepository extends EloquentBaseRepository implements Re
     }
 
     /**
+     * Store the redirection data to the database.
+     *
      * @param array $input
      *
      * @throws \Exception|\Throwable
@@ -49,7 +53,7 @@ class EloquentRedirectionRepository extends EloquentBaseRepository implements Re
             throw new GeneralException(__('exceptions.backend.redirections.already_exist'));
         }
 
-        if (! $redirection->save()) {
+        if (!$redirection->save()) {
             throw new GeneralException(__('exceptions.backend.redirections.create'));
         }
 
@@ -57,6 +61,8 @@ class EloquentRedirectionRepository extends EloquentBaseRepository implements Re
     }
 
     /**
+     * Update the redirection data from databse.
+     *
      * @param Redirection $redirection
      * @param array       $input
      *
@@ -73,7 +79,7 @@ class EloquentRedirectionRepository extends EloquentBaseRepository implements Re
             throw new GeneralException(__('exceptions.backend.redirections.already_exist'));
         }
 
-        if (! $redirection->update($input)) {
+        if (!$redirection->update($input)) {
             throw new GeneralException(__('exceptions.backend.redirections.update'));
         }
 
@@ -81,6 +87,8 @@ class EloquentRedirectionRepository extends EloquentBaseRepository implements Re
     }
 
     /**
+     * Delete the Redirection.
+     *
      * @param Redirection $redirection
      *
      * @throws \Exception|\Throwable
@@ -89,7 +97,7 @@ class EloquentRedirectionRepository extends EloquentBaseRepository implements Re
      */
     public function destroy(Redirection $redirection)
     {
-        if (! $redirection->delete()) {
+        if (!$redirection->delete()) {
             throw new GeneralException(__('exceptions.backend.redirections.delete'));
         }
 
@@ -97,6 +105,8 @@ class EloquentRedirectionRepository extends EloquentBaseRepository implements Re
     }
 
     /**
+     * Delete a batch of redirection.
+     *
      * @param array $ids
      *
      * @throws \Exception|\Throwable
@@ -118,6 +128,8 @@ class EloquentRedirectionRepository extends EloquentBaseRepository implements Re
     }
 
     /**
+     * Enable a batch of redirection.
+     *
      * @param array $ids
      *
      * @throws \Exception|\Throwable
@@ -140,6 +152,8 @@ class EloquentRedirectionRepository extends EloquentBaseRepository implements Re
     }
 
     /**
+     * Disable a batch of redirection.
+     *
      * @param array $ids
      *
      * @throws \Exception|\Throwable

@@ -17,7 +17,7 @@ class EloquentTagRepository extends EloquentBaseRepository implements TagReposit
     protected $localization;
 
     /**
-     * EloquentUserRepository constructor.
+     * Contruct the Tag and LaravelLocalization instances.
      *
      * @param Tag                                              $tag
      * @param \Mcamara\LaravelLocalization\LaravelLocalization $localization
@@ -29,6 +29,8 @@ class EloquentTagRepository extends EloquentBaseRepository implements TagReposit
     }
 
     /**
+     * Find the tag by its slug.
+     *
      * @param string $slug
      *
      * @return mixed

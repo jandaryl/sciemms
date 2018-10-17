@@ -15,7 +15,7 @@ use App\Repositories\Contracts\FormSubmissionRepository;
 class EloquentFormSubmissionRepository extends EloquentBaseRepository implements FormSubmissionRepository
 {
     /**
-     * EloquentFormSubmissionRepository constructor.
+     * Construct the Form Submission instance.
      *
      * @param FormSubmission $formSubmission
      */
@@ -25,6 +25,8 @@ class EloquentFormSubmissionRepository extends EloquentBaseRepository implements
     }
 
     /**
+     * Store the Form Submission data.
+     *
      * @param string $type
      * @param array  $input
      *
@@ -56,6 +58,8 @@ class EloquentFormSubmissionRepository extends EloquentBaseRepository implements
     }
 
     /**
+     * Delete the Form Submission.
+     *
      * @param FormSubmission $formSubmission
      *
      * @throws \Exception|\Throwable
@@ -64,7 +68,7 @@ class EloquentFormSubmissionRepository extends EloquentBaseRepository implements
      */
     public function destroy(FormSubmission $formSubmission)
     {
-        if (! $formSubmission->delete()) {
+        if (!$formSubmission->delete()) {
             throw new GeneralException(__('exceptions.backend.form_submissions.delete'));
         }
 
@@ -72,6 +76,8 @@ class EloquentFormSubmissionRepository extends EloquentBaseRepository implements
     }
 
     /**
+     * Delete a batch of selected form submissions data.
+     *
      * @param array $ids
      *
      * @throws \Exception|\Throwable

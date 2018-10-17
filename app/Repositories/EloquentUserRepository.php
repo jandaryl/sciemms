@@ -37,7 +37,7 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
     protected $roles;
 
     /**
-     * EloquentUserRepository constructor.
+     * Construct the User, Role, ConfigRepository and LaravelLocalization instances.
      *
      * @param User                                             $user
      * @param \App\Repositories\Contracts\RoleRepository       $roles
@@ -57,6 +57,8 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
     }
 
     /**
+     * Find the user by its slug.
+     *
      * @param string $slug
      *
      * @return User
@@ -67,6 +69,8 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
     }
 
     /**
+     * Store the user data to the database.
+     *
      * @param array $input
      * @param bool  $confirmed
      *
@@ -82,6 +86,7 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
         if (isset($input['password'])) {
             $user->password = Hash::make($input['password']);
         }
+
         $user->confirmed = $confirmed;
 
         if (empty($user->locale)) {
@@ -92,7 +97,7 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
             $user->timezone = $this->config->get('app.timezone');
         }
 
-        if (! $this->save($user, $input)) {
+        if (!$this->save($user, $input)) {
             throw new GeneralException(__('exceptions.backend.users.create'));
         }
 
@@ -102,6 +107,8 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
     }
 
     /**
+     * Update the user data from the database.
+     *
      * @param User  $user
      * @param array $input
      *
@@ -112,17 +119,17 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
      */
     public function update(User $user, array $input)
     {
-        if (! $user->can_edit) {
+        if (!$user->can_edit) {
             throw new GeneralException(__('exceptions.backend.users.first_user_cannot_be_edited'));
         }
 
         $user->fill(Arr::except($input, 'password'));
 
-        if ($user->is_super_admin && ! $user->active) {
+        if ($user->is_super_admin && !$user->active) {
             throw new GeneralException(__('exceptions.backend.users.first_user_cannot_be_disabled'));
         }
 
-        if (! $this->save($user, $input)) {
+        if (!$this->save($user, $input)) {
             throw new GeneralException(__('exceptions.backend.users.update'));
         }
 
@@ -132,6 +139,8 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
     }
 
     /**
+     * Save the user data to the database.
+     *
      * @param \App\Models\User $user
      * @param array            $input
      *
@@ -141,32 +150,34 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
      */
     private function save(User $user, array $input)
     {
-        if (isset($input['password']) && ! empty($input['password'])) {
+        if (isset($input['password']) && !empty($input['password'])) {
             $user->password = Hash::make($input['password']);
         }
 
-        if (! $user->save()) {
+        if (!$user->save()) {
             return false;
         }
 
         $roles = $input['roles'] ?? [];
 
-        if (! empty($roles)) {
+        if (!empty($roles)) {
             $allowedRoles = $this->roles->getAllowedRoles()->keyBy('id');
 
             foreach ($roles as $id) {
-                if (! $allowedRoles->has($id)) {
+                if (!$allowedRoles->has($id)) {
                     throw new GeneralException(__('exceptions.backend.users.cannot_set_superior_roles'));
                 }
             }
         }
 
+        // Store the role id to the intermediate or pivot table.
         $user->roles()->sync($roles);
 
         return true;
     }
 
     /**
+     * Delete the User.
      * @param User $user
      *
      * @throws \Exception|\Throwable
@@ -175,11 +186,11 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
      */
     public function destroy(User $user)
     {
-        if (! $user->can_delete) {
+        if (!$user->can_delete) {
             throw new GeneralException(__('exceptions.backend.users.first_user_cannot_be_destroyed'));
         }
 
-        if (! $user->delete()) {
+        if (!$user->delete()) {
             throw new GeneralException(__('exceptions.backend.users.delete'));
         }
 
@@ -189,6 +200,8 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
     }
 
     /**
+     * Impersonate the other users.
+     *
      * @param User $user
      *
      * @throws Exception
@@ -209,19 +222,21 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
             return redirect()->route('admin.home');
         }
 
-        if (! session()->get('admin_user_id')) {
+        if (!session()->get('admin_user_id')) {
             session(['admin_user_id' => $authenticatedUser->id]);
             session(['admin_user_name' => $authenticatedUser->name]);
             session(['temp_user_id' => $user->id]);
         }
 
-        //Login user
+        // Login the other user by using its id.
         auth()->loginUsingId($user->id);
 
         return redirect(home_route());
     }
 
     /**
+     * Delete a batch of users.
+     *
      * @param array $ids
      *
      * @throws \Exception|\Throwable
@@ -243,6 +258,8 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
     }
 
     /**
+     * Enable a batch of users.
+     *
      * @param array $ids
      *
      * @throws \Exception|\Throwable
@@ -265,6 +282,8 @@ class EloquentUserRepository extends EloquentBaseRepository implements UserRepos
     }
 
     /**
+     * Disable a batch of users.
+     *
      * @param array $ids
      *
      * @throws \Exception|\Throwable

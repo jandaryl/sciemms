@@ -2,22 +2,21 @@
 
 namespace App\Models;
 
-use App\Models\Traits\HasEditor;
-use App\Models\Traits\HasTranslatableSlug;
-use App\Models\Traits\Metable;
-use App\Models\Traits\TranslatableJson;
 use Carbon\Carbon;
-use GeneaLabs\LaravelModelCaching\Traits\Cachable;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Gate;
+use Spatie\Tags\HasTags;
 use Laravel\Scout\Searchable;
+use App\Models\Traits\Metable;
+use App\Models\Traits\HasEditor;
+use Illuminate\Support\Facades\Gate;
+use Stevebauman\Purify\Facades\Purify;
+use Illuminate\Database\Eloquent\Model;
+use App\Models\Traits\TranslatableJson;
+use Spatie\Translatable\HasTranslations;
+use Illuminate\Database\Eloquent\Builder;
+use App\Models\Traits\HasTranslatableSlug;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-use Spatie\MediaLibrary\Models\Media;
-use Spatie\Tags\HasTags;
-use Spatie\Translatable\HasTranslations;
-use Stevebauman\Purify\Facades\Purify;
+use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 
 class Post extends Model implements HasMedia
 {
@@ -165,12 +164,12 @@ class Post extends Model implements HasMedia
 
     public function getMetaTitleAttribute()
     {
-        return null !== $this->meta && ! empty($this->meta->title) ? $this->meta->title : $this->title;
+        return null !== $this->meta && !empty($this->meta->title) ? $this->meta->title : $this->title;
     }
 
     public function getMetaDescriptionAttribute()
     {
-        return null !== $this->meta && ! empty($this->meta->description) ? $this->meta->description : $this->summary;
+        return null !== $this->meta && !empty($this->meta->description) ? $this->meta->description : $this->summary;
     }
 
     public function owner()

@@ -27,7 +27,7 @@ class EloquentAccountRepository extends EloquentBaseRepository implements Accoun
     protected $users;
 
     /**
-     * EloquentUserRepository constructor.
+     * Construct the User and User Repository instance.
      *
      * @param User                                       $user
      * @param \App\Repositories\Contracts\UserRepository $users
@@ -43,6 +43,8 @@ class EloquentAccountRepository extends EloquentBaseRepository implements Accoun
     }
 
     /**
+     * Register the user.
+     *
      * @param array $input
      *
      * @throws \Throwable
@@ -60,6 +62,8 @@ class EloquentAccountRepository extends EloquentBaseRepository implements Accoun
     }
 
     /**
+     * Login the user.
+     *
      * @param Authenticatable $user
      *
      * @throws \App\Exceptions\GeneralException
@@ -81,6 +85,8 @@ class EloquentAccountRepository extends EloquentBaseRepository implements Accoun
     }
 
     /**
+     * Find or create the user by using third party account.
+     *
      * @param              $provider
      * @param AbstractUser $data
      *
@@ -110,7 +116,7 @@ class EloquentAccountRepository extends EloquentBaseRepository implements Accoun
             ], true);
         }
 
-        // Save new provider if needed
+        // Save new provider if needed.
         if (!$user->getProvider($provider)) {
             $user->providers()->save(new SocialLogin([
                 'provider'    => $provider,
@@ -122,6 +128,8 @@ class EloquentAccountRepository extends EloquentBaseRepository implements Accoun
     }
 
     /**
+     * Check the user permission.
+     *
      * @param \Illuminate\Contracts\Auth\Authenticatable $user
      * @param                                            $name
      *
@@ -137,8 +145,7 @@ class EloquentAccountRepository extends EloquentBaseRepository implements Accoun
 
         /** @var \Illuminate\Support\Collection $permissions */
         $permissions = session()->get('permissions');
-        // $permissions = ['create post'];
-        // dd($permissions);
+
         if ($permissions->isEmpty()) {
             return false;
         }
@@ -147,6 +154,8 @@ class EloquentAccountRepository extends EloquentBaseRepository implements Accoun
     }
 
     /**
+     * Update the user account information.
+     *
      * @param $input
      *
      * @throws \Illuminate\Database\Eloquent\MassAssignmentException
@@ -174,6 +183,8 @@ class EloquentAccountRepository extends EloquentBaseRepository implements Accoun
     }
 
     /**
+     * Change the password of the user.
+     *
      * @param $oldPassword
      * @param $newPassword
      *
@@ -200,7 +211,7 @@ class EloquentAccountRepository extends EloquentBaseRepository implements Accoun
     }
 
     /**
-     * Send mail confirmation.
+     * Send confirmation to the user.
      */
     public function sendConfirmation()
     {
@@ -211,6 +222,8 @@ class EloquentAccountRepository extends EloquentBaseRepository implements Accoun
     }
 
     /**
+     * Send confirmation to the user.
+     *
      * @param \App\Models\User $user
      */
     private function sendConfirmationToUser(User $user)
@@ -222,7 +235,7 @@ class EloquentAccountRepository extends EloquentBaseRepository implements Accoun
     }
 
     /**
-     * Send mail confirmation.
+     * Confirm the email.
      *
      * @param $token
      *
@@ -240,6 +253,8 @@ class EloquentAccountRepository extends EloquentBaseRepository implements Accoun
     }
 
     /**
+     * Delete the user.
+     *
      * @throws \App\Exceptions\GeneralException|Exception
      *
      * @return mixed
