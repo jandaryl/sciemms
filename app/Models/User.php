@@ -172,7 +172,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Roles of the user.
+     * Get the roles that belong to the user.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
@@ -258,7 +258,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Providers of the user.
+     * Get the providers for the user.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -280,7 +280,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Posts of the user.
+     * Get the posts for the user.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

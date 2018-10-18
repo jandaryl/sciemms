@@ -72,7 +72,7 @@ class Role extends Model
     }
 
     /**
-     * Permissions of the role.
+     * Get the permissions for the user role.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

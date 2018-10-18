@@ -273,7 +273,7 @@ class Post extends Model implements HasMedia
     }
 
     /**
-     * Owner of the post.
+     * Get the owner of the post.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
