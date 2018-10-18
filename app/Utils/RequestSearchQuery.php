@@ -36,6 +36,8 @@ class RequestSearchQuery
     }
 
     /**
+     * Get the localized column.
+     *
      * @param Model $model
      * @param $column
      * @return string
@@ -52,6 +54,8 @@ class RequestSearchQuery
     }
 
     /**
+     * Initialize the query for searching.
+     *
      * @param array $searchables
      */
     public function initializeQuery($searchables = [])
