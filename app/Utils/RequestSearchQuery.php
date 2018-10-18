@@ -20,6 +20,13 @@ class RequestSearchQuery
      */
     private $query;
 
+    /**
+     * RequestSearchQuery constructor.
+     *
+     * @param Request $request
+     * @param Builder $query
+     * @param array $searchables
+     */
     public function __construct(Request $request, Builder $query, $searchables = [])
     {
         $this->request = $request;
@@ -28,6 +35,11 @@ class RequestSearchQuery
         $this->initializeQuery($searchables);
     }
 
+    /**
+     * @param Model $model
+     * @param $column
+     * @return string
+     */
     private function getLocalizedColumn(Model $model, $column)
     {
         if (property_exists($model, 'translatable') && in_array($column, $model->translatable, true)) {
@@ -45,6 +57,7 @@ class RequestSearchQuery
     public function initializeQuery($searchables = [])
     {
         $model = $this->query->getModel();
+
         if ($column = $this->request->get('column')) {
             $this->query->orderBy(
                 $this->getLocalizedColumn($model, $column),
@@ -64,6 +77,8 @@ class RequestSearchQuery
     }
 
     /**
+     * Get the result per page.
+     *
      * @param $columns
      *
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
@@ -74,6 +89,8 @@ class RequestSearchQuery
     }
 
     /**
+     * Export the data to the excel.
+     *
      * @param       $columns
      * @param array $headings
      * @param       $fileName
