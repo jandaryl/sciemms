@@ -21,7 +21,7 @@ class RequestSearchQuery
     private $query;
 
     /**
-     * RequestSearchQuery constructor.
+     * Construct the Request and Builder instances.
      *
      * @param Request $request
      * @param Builder $query
