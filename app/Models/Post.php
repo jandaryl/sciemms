@@ -18,6 +18,10 @@ use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 
+/**
+ * Class Post
+ * @package App\Models
+ */
 class Post extends Model implements HasMedia
 {
     use Searchable;
@@ -29,16 +33,31 @@ class Post extends Model implements HasMedia
     use HasEditor;
     use Cachable;
 
+    /**
+     * @var string
+     */
     public $sluggable = 'title';
 
+    /**
+     * @var array
+     */
     public $editorFields = [
         'body',
     ];
 
+    /**
+     * @var string
+     */
     public $editorCollectionName = 'editor images';
 
+    /**
+     * @var bool
+     */
     public $asYouType = true;
 
+    /**
+     * @var array
+     */
     public $translatable = [
         'title',
         'summary',
@@ -46,11 +65,17 @@ class Post extends Model implements HasMedia
         'slug',
     ];
 
+    /**
+     * @var array
+     */
     protected $dates = [
         'published_at',
         'unpublished_at',
     ];
 
+    /**
+     * @var array
+     */
     protected $appends = [
         'state',
         'status_label',
@@ -61,6 +86,9 @@ class Post extends Model implements HasMedia
         'can_delete',
     ];
 
+    /**
+     * @var array
+     */
     protected $casts = [
         'status'             => 'integer',
         'pinned'             => 'boolean',
@@ -68,6 +96,9 @@ class Post extends Model implements HasMedia
         'has_featured_image' => 'boolean',
     ];
 
+    /**
+     * @var array
+     */
     protected $fillable = [
         'status',
         'title',
@@ -80,6 +111,9 @@ class Post extends Model implements HasMedia
         'promoted',
     ];
 
+    /**
+     * @var array
+     */
     protected $with = [
         'tags',
         'media',
@@ -88,6 +122,8 @@ class Post extends Model implements HasMedia
     ];
 
     /**
+     * Append the can_edit in this model.
+     *
      * @return bool
      */
     public function getCanEditAttribute()
@@ -96,6 +132,8 @@ class Post extends Model implements HasMedia
     }
 
     /**
+     * Append the can_delete in this model.
+     *
      * @return bool
      */
     public function getCanDeleteAttribute()
@@ -104,7 +142,7 @@ class Post extends Model implements HasMedia
     }
 
     /**
-     *
+     * Delete the meta data that associated in this model when this model is deleted.
      */
     protected static function boot()
     {
@@ -115,11 +153,16 @@ class Post extends Model implements HasMedia
         });
     }
 
+    /**
+     * Define the states of this model.
+     */
     const DRAFT = 0;
     const PENDING = 1;
     const PUBLISHED = 2;
 
     /**
+     * Get the status of this model.
+     *
      * @return array
      */
     public static function getStatuses()
@@ -132,6 +175,8 @@ class Post extends Model implements HasMedia
     }
 
     /**
+     * Get the states of this model.
+     *
      * @return array
      */
     public static function getStates()
@@ -144,6 +189,8 @@ class Post extends Model implements HasMedia
     }
 
     /**
+     * Append the status label of this model.
+     *
      * @return mixed
      */
     public function getStatusLabelAttribute()
@@ -152,6 +199,8 @@ class Post extends Model implements HasMedia
     }
 
     /**
+     * Append the state of this model.
+     *
      * @return mixed
      */
     public function getStateAttribute()
@@ -160,6 +209,8 @@ class Post extends Model implements HasMedia
     }
 
     /**
+     * Append the published in this model.
+     *
      * @return bool
      */
     public function getPublishedAttribute()
@@ -168,6 +219,8 @@ class Post extends Model implements HasMedia
     }
 
     /**
+     * Append has_feature_image of this model.
+     *
      * @return bool
      */
     public function getHasFeaturedImageAttribute()
@@ -176,6 +229,8 @@ class Post extends Model implements HasMedia
     }
 
     /**
+     * Append the feature_image_path in this model.
+     *
      * @return mixed|string
      */
     public function getFeaturedImagePathAttribute()
@@ -188,6 +243,8 @@ class Post extends Model implements HasMedia
     }
 
     /**
+     * Append the thumbnail_image_path in this model.
+     *
      * @return string
      */
     public function getThumbnailImagePathAttribute()
@@ -196,6 +253,8 @@ class Post extends Model implements HasMedia
     }
 
     /**
+     * Append the meta_title in this model.
+     *
      * @return mixed
      */
     public function getMetaTitleAttribute()
@@ -204,6 +263,8 @@ class Post extends Model implements HasMedia
     }
 
     /**
+     * Append the meta_description in this model.
+     *
      * @return mixed
      */
     public function getMetaDescriptionAttribute()
@@ -212,6 +273,8 @@ class Post extends Model implements HasMedia
     }
 
     /**
+     * Owner of the post.
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function owner()
@@ -220,6 +283,8 @@ class Post extends Model implements HasMedia
     }
 
     /**
+     * Set the published_at of this model.
+     *
      * @param $value
      */
     public function setPublishedAtAttribute($value)
@@ -232,6 +297,8 @@ class Post extends Model implements HasMedia
     }
 
     /**
+     * Set the unpublished_at of this model.
+     *
      * @param $value
      */
     public function setUnpublishedAtAttribute($value)
@@ -244,6 +311,8 @@ class Post extends Model implements HasMedia
     }
 
     /**
+     * Filter the published of this model.
+     *
      * @param Builder $query
      * @return Builder
      */
@@ -253,6 +322,8 @@ class Post extends Model implements HasMedia
     }
 
     /**
+     * Filter the owner of this model.
+     *
      * @param Builder $query
      * @param User $user
      * @return Builder
@@ -263,6 +334,8 @@ class Post extends Model implements HasMedia
     }
 
     /**
+     * Define the data that can be searchable.
+     *
      * @return array
      */
     public function toSearchableArray()
@@ -276,6 +349,8 @@ class Post extends Model implements HasMedia
     }
 
     /**
+     * Transform the attributes to array.
+     *
      * @return array
      */
     public function toArray()
