@@ -87,16 +87,25 @@ class Post extends Model implements HasMedia
         'meta',
     ];
 
+    /**
+     * @return bool
+     */
     public function getCanEditAttribute()
     {
         return true;
     }
 
+    /**
+     * @return bool
+     */
     public function getCanDeleteAttribute()
     {
         return Gate::check('delete', $this);
     }
 
+    /**
+     *
+     */
     protected static function boot()
     {
         parent::boot();
@@ -110,6 +119,9 @@ class Post extends Model implements HasMedia
     const PENDING = 1;
     const PUBLISHED = 2;
 
+    /**
+     * @return array
+     */
     public static function getStatuses()
     {
         return [
@@ -119,6 +131,9 @@ class Post extends Model implements HasMedia
         ];
     }
 
+    /**
+     * @return array
+     */
     public static function getStates()
     {
         return [
@@ -128,26 +143,41 @@ class Post extends Model implements HasMedia
         ];
     }
 
+    /**
+     * @return mixed
+     */
     public function getStatusLabelAttribute()
     {
         return self::getStatuses()[$this->status];
     }
 
+    /**
+     * @return mixed
+     */
     public function getStateAttribute()
     {
         return self::getStates()[$this->status];
     }
 
+    /**
+     * @return bool
+     */
     public function getPublishedAttribute()
     {
         return self::PUBLISHED === $this->status;
     }
 
+    /**
+     * @return bool
+     */
     public function getHasFeaturedImageAttribute()
     {
         return (bool) $this->getMedia('featured image')->first();
     }
 
+    /**
+     * @return mixed|string
+     */
     public function getFeaturedImagePathAttribute()
     {
         if ($media = $this->getMedia('featured image')->first()) {
@@ -157,26 +187,41 @@ class Post extends Model implements HasMedia
         return '/images/placeholder.png';
     }
 
+    /**
+     * @return string
+     */
     public function getThumbnailImagePathAttribute()
     {
         return image_template_url('small', $this->featured_image_path);
     }
 
+    /**
+     * @return mixed
+     */
     public function getMetaTitleAttribute()
     {
         return null !== $this->meta && !empty($this->meta->title) ? $this->meta->title : $this->title;
     }
 
+    /**
+     * @return mixed
+     */
     public function getMetaDescriptionAttribute()
     {
         return null !== $this->meta && !empty($this->meta->description) ? $this->meta->description : $this->summary;
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function owner()
     {
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    /**
+     * @param $value
+     */
     public function setPublishedAtAttribute($value)
     {
         if (is_string($value)) {
@@ -186,6 +231,9 @@ class Post extends Model implements HasMedia
         }
     }
 
+    /**
+     * @param $value
+     */
     public function setUnpublishedAtAttribute($value)
     {
         if (is_string($value)) {
@@ -195,16 +243,28 @@ class Post extends Model implements HasMedia
         }
     }
 
+    /**
+     * @param Builder $query
+     * @return Builder
+     */
     public function scopePublished(Builder $query)
     {
         return $query->where('status', '=', self::PUBLISHED);
     }
 
+    /**
+     * @param Builder $query
+     * @param User $user
+     * @return Builder
+     */
     public function scopeWithOwner(Builder $query, User $user)
     {
         return $query->where('user_id', '=', $user->id);
     }
 
+    /**
+     * @return array
+     */
     public function toSearchableArray()
     {
         return [
@@ -215,6 +275,9 @@ class Post extends Model implements HasMedia
         ];
     }
 
+    /**
+     * @return array
+     */
     public function toArray()
     {
         $attributes = parent::toArray();
