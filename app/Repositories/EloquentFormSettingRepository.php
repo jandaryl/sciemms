@@ -13,7 +13,7 @@ use App\Repositories\Contracts\FormSettingRepository;
 class EloquentFormSettingRepository extends EloquentBaseRepository implements FormSettingRepository
 {
     /**
-     * EloquentFormSettingRepository constructor.
+     * Construct the form setting.
      *
      * @param FormSetting $formSetting
      */
@@ -23,6 +23,8 @@ class EloquentFormSettingRepository extends EloquentBaseRepository implements Fo
     }
 
     /**
+     * Find the form setting by its name.
+     *
      * @param $name
      *
      * @return FormSetting
@@ -34,6 +36,8 @@ class EloquentFormSettingRepository extends EloquentBaseRepository implements Fo
     }
 
     /**
+     * Store the form setting data to database.
+     *
      * @param array $input
      *
      * @throws \Exception|\Throwable
@@ -49,7 +53,7 @@ class EloquentFormSettingRepository extends EloquentBaseRepository implements Fo
             throw new GeneralException(__('exceptions.backend.form_settings.already_exist'));
         }
 
-        if (! $formSetting->save()) {
+        if (!$formSetting->save()) {
             throw new GeneralException(__('exceptions.backend.form_settings.create'));
         }
 
@@ -57,6 +61,8 @@ class EloquentFormSettingRepository extends EloquentBaseRepository implements Fo
     }
 
     /**
+     * Update the form setting data in database.
+     *
      * @param FormSetting $formSetting
      * @param array       $input
      *
@@ -73,7 +79,7 @@ class EloquentFormSettingRepository extends EloquentBaseRepository implements Fo
             throw new GeneralException(__('exceptions.backend.form_settings.already_exist'));
         }
 
-        if (! $formSetting->update($input)) {
+        if (!$formSetting->update($input)) {
             throw new GeneralException(__('exceptions.backend.form_settings.update'));
         }
 
@@ -81,6 +87,8 @@ class EloquentFormSettingRepository extends EloquentBaseRepository implements Fo
     }
 
     /**
+     * Delete the form setting.
+     *
      * @param FormSetting $formSetting
      *
      * @throws \Exception|\Throwable
@@ -89,7 +97,7 @@ class EloquentFormSettingRepository extends EloquentBaseRepository implements Fo
      */
     public function destroy(FormSetting $formSetting)
     {
-        if (! $formSetting->delete()) {
+        if (!$formSetting->delete()) {
             throw new GeneralException(__('exceptions.backend.form_settings.delete'));
         }
 

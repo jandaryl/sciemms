@@ -18,7 +18,7 @@ use App\Repositories\Contracts\PostRepository;
 class EloquentPostRepository extends EloquentBaseRepository implements PostRepository
 {
     /**
-     * EloquentUserRepository constructor.
+     * Construct the Post instance.
      *
      * @param Post $post
      */
@@ -29,6 +29,8 @@ class EloquentPostRepository extends EloquentBaseRepository implements PostRepos
     }
 
     /**
+     * Publish the posts.
+     *
      * @return mixed
      */
     public function published()
@@ -41,6 +43,8 @@ class EloquentPostRepository extends EloquentBaseRepository implements PostRepos
     }
 
     /**
+     * Publish the posts by tag.
+     *
      * @param Tag $tag
      *
      * @return mixed
@@ -51,6 +55,8 @@ class EloquentPostRepository extends EloquentBaseRepository implements PostRepos
     }
 
     /**
+     * Publish the posts by its owner.
+     *
      * @param \App\Models\User $user
      *
      * @return mixed
@@ -61,6 +67,8 @@ class EloquentPostRepository extends EloquentBaseRepository implements PostRepos
     }
 
     /**
+     * Find the post data by slug.
+     *
      * @param string $slug
      *
      * @return mixed
@@ -71,6 +79,8 @@ class EloquentPostRepository extends EloquentBaseRepository implements PostRepos
     }
 
     /**
+     * Save and publish the Post.
+     *
      * @param Post                               $post
      * @param array                              $input
      * @param \Illuminate\Http\UploadedFile|null $image
@@ -87,6 +97,8 @@ class EloquentPostRepository extends EloquentBaseRepository implements PostRepos
     }
 
     /**
+     * Save the Post as Draft.
+     *
      * @param Post                               $post
      * @param array                              $input
      * @param \Illuminate\Http\UploadedFile|null $image
@@ -103,6 +115,8 @@ class EloquentPostRepository extends EloquentBaseRepository implements PostRepos
     }
 
     /**
+     * Save the Post in the database.
+     *
      * @param Post                               $post
      * @param array                              $input
      * @param \Illuminate\Http\UploadedFile|null $image
@@ -114,25 +128,25 @@ class EloquentPostRepository extends EloquentBaseRepository implements PostRepos
     private function save(Post $post, array $input, UploadedFile $image = null)
     {
         if ($post->exists) {
-            if (! Gate::check('update', $post)) {
+            if (!Gate::check('update', $post)) {
                 throw new GeneralException(__('exceptions.backend.posts.save'));
             }
         } else {
             $post->user_id = auth()->id();
         }
 
-        if (Post::PUBLISHED === $post->status && ! Gate::check('publish posts')) {
+        if (Post::PUBLISHED === $post->status && !Gate::check('publish posts')) {
             // User with no publish permissions must go to moderation awaiting
             $post->status = Post::PENDING;
         }
 
         DB::transaction(function () use ($post, $input, $image) {
-            if (! $post->save()) {
+            if (!$post->save()) {
                 throw new GeneralException(__('exceptions.backend.posts.save'));
             }
 
             if (isset($input['meta'])) {
-                if (! $post->meta) {
+                if (!$post->meta) {
                     $post->meta()->create($input['meta']);
                 } else {
                     $post->meta->update($input['meta']);
@@ -151,7 +165,7 @@ class EloquentPostRepository extends EloquentBaseRepository implements PostRepos
             $currentFeaturedImage = $post->getMedia('featured image')->first();
 
             // Delete current image if replaced or delete asking
-            if ($currentFeaturedImage && ($image || ! $input['has_featured_image'])) {
+            if ($currentFeaturedImage && ($image || !$input['has_featured_image'])) {
                 $currentFeaturedImage->delete();
             }
 
@@ -167,6 +181,8 @@ class EloquentPostRepository extends EloquentBaseRepository implements PostRepos
     }
 
     /**
+     * Delete the Post.
+     *
      * @param Post $post
      *
      * @throws \Exception
@@ -175,7 +191,7 @@ class EloquentPostRepository extends EloquentBaseRepository implements PostRepos
      */
     public function destroy(Post $post)
     {
-        if (! $post->delete()) {
+        if (!$post->delete()) {
             throw new GeneralException(__('exceptions.backend.posts.delete'));
         }
 
@@ -183,6 +199,8 @@ class EloquentPostRepository extends EloquentBaseRepository implements PostRepos
     }
 
     /**
+     * Make a batch query.
+     *
      * @param array $ids
      *
      * @return \Illuminate\Database\Eloquent\Builder
@@ -195,6 +213,8 @@ class EloquentPostRepository extends EloquentBaseRepository implements PostRepos
     }
 
     /**
+     * Delete a batch of data.
+     *
      * @param array $ids
      *
      * @throws \Exception|\Throwable
@@ -206,7 +226,7 @@ class EloquentPostRepository extends EloquentBaseRepository implements PostRepos
         DB::transaction(function () use ($ids) {
             $query = $this->batchQuery($ids);
 
-            if (! Gate::check('delete posts')) {
+            if (!Gate::check('delete posts')) {
                 // Filter to only current user's posts
                 $query->whereUserId(auth()->id());
             }
@@ -225,6 +245,8 @@ class EloquentPostRepository extends EloquentBaseRepository implements PostRepos
     }
 
     /**
+     * Publish a batch of data.
+     *
      * @param array $ids
      *
      * @throws \Throwable
@@ -237,7 +259,7 @@ class EloquentPostRepository extends EloquentBaseRepository implements PostRepos
         DB::transaction(function () use ($ids) {
             $query = $this->batchQuery($ids);
 
-            if (! Gate::check('edit posts')) {
+            if (!Gate::check('edit posts')) {
                 // Filter to only current user's posts
                 $query->whereUserId(auth()->id());
             }
@@ -258,6 +280,8 @@ class EloquentPostRepository extends EloquentBaseRepository implements PostRepos
     }
 
     /**
+     * Pin a batch of data.
+     *
      * @param array $ids
      *
      * @throws \Throwable
@@ -270,7 +294,7 @@ class EloquentPostRepository extends EloquentBaseRepository implements PostRepos
         DB::transaction(function () use ($ids) {
             $query = $this->batchQuery($ids);
 
-            if (! Gate::check('edit posts')) {
+            if (!Gate::check('edit posts')) {
                 // Filter to only current user's posts
                 $query->whereUserId(auth()->id());
             }
@@ -286,6 +310,8 @@ class EloquentPostRepository extends EloquentBaseRepository implements PostRepos
     }
 
     /**
+     * Promote a batch of data.
+     *
      * @param array $ids
      *
      * @throws \Throwable
@@ -298,7 +324,7 @@ class EloquentPostRepository extends EloquentBaseRepository implements PostRepos
         DB::transaction(function () use ($ids) {
             $query = $this->batchQuery($ids);
 
-            if (! Gate::check('edit posts')) {
+            if (!Gate::check('edit posts')) {
                 // Filter to only current user's posts
                 $query->whereUserId(auth()->id());
             }
