@@ -49,10 +49,10 @@ return [
         ],
 
         'posts' => [
-            'create' => 'Error on post creation',
-            'update' => 'Error on post updating',
-            'save'   => 'Error on post saving',
-            'delete' => 'Error on post deletion',
+            'create' => 'Error on announcement creation',
+            'update' => 'Error on announcement updating',
+            'save'   => 'Error on announcement saving',
+            'delete' => 'Error on announcement deletion',
         ],
     ],
 

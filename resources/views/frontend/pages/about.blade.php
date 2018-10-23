@@ -27,12 +27,12 @@
     </div>
 
     <div id="app">
-        <b-card header="Vue Panel Component" class="mb-3" v-cloak>
+ <!--        <b-card header="Vue Panel Component" class="mb-3" v-cloak>
             <p>Hey ! I'm a Vue Panel component !</p>
-        </b-card>
+        </b-card> -->
     </div>
 
-    <div class="card mb-3">
+<!--     <div class="card mb-3">
         <div class="card-header">
             This panel show original 4K images samples optimized by imagecache intervention laravel package
         </div>
@@ -50,5 +50,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 @endsection

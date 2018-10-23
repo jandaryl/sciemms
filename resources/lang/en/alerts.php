@@ -46,9 +46,9 @@ return [
         ],
 
         'posts' => [
-            'created'        => 'Post created',
-            'updated'        => 'Post updated',
-            'deleted'        => 'Post deleted',
+            'created'        => 'Announcement created',
+            'updated'        => 'Announcement updated',
+            'deleted'        => 'Announcement deleted',
             'bulk_destroyed' => 'Selected posts deleted',
             'bulk_published' => 'Selected posts published',
             'bulk_pending'   => 'Selected posts are awaiting moderation',

@@ -2,7 +2,7 @@
 
 return [
     'categories' => [
-        'blog'   => 'Blog',
+        'blog'   => 'Announcements',
         'form'   => 'Forms',
         'access' => 'Access',
         'seo'    => 'SEO',
@@ -22,8 +22,8 @@ return [
         ],
 
         'form_submissions' => [
-            'display_name' => 'View form submissions',
-            'description'  => 'Can view form submissions.',
+            'display_name' => 'View submissions',
+            'description'  => 'Can view submissions.',
         ],
 
         'users' => [
@@ -137,7 +137,7 @@ return [
         ],
 
         'form_submissions' => [
-            'display_name' => 'Delete form submissions',
+            'display_name' => 'Delete submissions',
             'description'  => 'Can delete form submissions.',
         ],
 
