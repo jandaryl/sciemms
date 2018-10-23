@@ -2,7 +2,7 @@
 
 return [
     'categories' => [
-        'blog'   => 'Blog',
+        'blog'   => 'Announcements',
         'form'   => 'Formularios',
         'access' => 'Acceso',
         'seo'    => 'SEO',

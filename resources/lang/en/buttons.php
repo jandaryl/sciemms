@@ -39,7 +39,7 @@ return [
     ],
 
     'posts' => [
-        'create'           => 'Create post',
+        'create'           => 'Create announcement',
         'save_and_publish' => 'Save and publish',
         'save_as_draft'    => 'Save as draft',
     ],
