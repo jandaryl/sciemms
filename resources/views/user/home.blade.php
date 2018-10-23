@@ -1,6 +1,6 @@
 @extends('layouts.frontend')
 
-@section('title', __('labels.user.titles.memo'))
+@section('title', __('labels.user.titles.space'))
 
 @section('content')
         <div class="card">
