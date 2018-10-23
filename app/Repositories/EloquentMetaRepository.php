@@ -14,7 +14,7 @@ use App\Repositories\Contracts\MetaRepository;
 class EloquentMetaRepository extends EloquentBaseRepository implements MetaRepository
 {
     /**
-     * EloquentMetaRepository constructor.
+     * Contruct the Meta instance.
      *
      * @param Meta $redirection
      */
@@ -24,6 +24,7 @@ class EloquentMetaRepository extends EloquentBaseRepository implements MetaRepos
     }
 
     /**
+     * Find the meta by its route.
      * @param $route
      *
      * @return Meta
@@ -35,6 +36,8 @@ class EloquentMetaRepository extends EloquentBaseRepository implements MetaRepos
     }
 
     /**
+     * Store the meta data in the database.
+     *
      * @param array $input
      *
      * @throws \Exception|\Throwable
@@ -50,7 +53,7 @@ class EloquentMetaRepository extends EloquentBaseRepository implements MetaRepos
             throw new GeneralException(__('exceptions.backend.metas.already_exist'));
         }
 
-        if (! $meta->save()) {
+        if (!$meta->save()) {
             throw new GeneralException(__('exceptions.backend.metas.create'));
         }
 
@@ -58,6 +61,8 @@ class EloquentMetaRepository extends EloquentBaseRepository implements MetaRepos
     }
 
     /**
+     * Update the Meta.
+     *
      * @param Meta  $meta
      * @param array $input
      *
@@ -76,7 +81,7 @@ class EloquentMetaRepository extends EloquentBaseRepository implements MetaRepos
             }
         }
 
-        if (! $meta->update($input)) {
+        if (!$meta->update($input)) {
             throw new GeneralException(__('exceptions.backend.metas.update'));
         }
 
@@ -84,6 +89,8 @@ class EloquentMetaRepository extends EloquentBaseRepository implements MetaRepos
     }
 
     /**
+     * Delete the Meta.
+     *
      * @param Meta $meta
      *
      * @throws \Exception|\Throwable
@@ -92,7 +99,7 @@ class EloquentMetaRepository extends EloquentBaseRepository implements MetaRepos
      */
     public function destroy(Meta $meta)
     {
-        if (! $meta->delete()) {
+        if (!$meta->delete()) {
             throw new GeneralException(__('exceptions.backend.metas.delete'));
         }
 
@@ -100,7 +107,9 @@ class EloquentMetaRepository extends EloquentBaseRepository implements MetaRepos
     }
 
     /**
-     * @param array $ids
+     *  Delete a batch of metas.
+     *
+     *  @param array $ids
      *
      * @throws \Exception|\Throwable
      *

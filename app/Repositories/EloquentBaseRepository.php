@@ -13,7 +13,7 @@ class EloquentBaseRepository implements BaseRepository
     protected $model;
 
     /**
-     * BaseRepository constructor.
+     * Construct the model instance.
      *
      * @param Model $model
      */
@@ -23,6 +23,8 @@ class EloquentBaseRepository implements BaseRepository
     }
 
     /**
+     * Define a new query in the model instance.
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function query()
@@ -31,6 +33,8 @@ class EloquentBaseRepository implements BaseRepository
     }
 
     /**
+     * Define the search from the Scout Buider.
+     *
      * @param      $query
      * @param null $callback
      *
@@ -42,6 +46,8 @@ class EloquentBaseRepository implements BaseRepository
     }
 
     /**
+     * Define the select query for the model.
+     *
      * @param array $columns
      *
      * @return \Illuminate\Database\Eloquent\Builder
@@ -52,6 +58,8 @@ class EloquentBaseRepository implements BaseRepository
     }
 
     /**
+     * Define the make to new the model instance.
+     *
      * @param array $attributes
      *
      * @return Model
